@@ -1,0 +1,37 @@
+1º Con mongodb instalado, etc....
+2º Ir a la consola de comandos, ir al directorio donde vamos a crear el proyecto
+3º crear un proyecto de nodejs(nos creado package.json, donde está la conf del proyecto),  comando: npm init 
+4º nos pedira nombre, descripcion, etc..nos podemos saltar con intro y como  entry point: "index.js"
+5º Se nos ha creado nuestro package.json
+6º Instalar dependencias, en la carpeta del proyecto (en la consola):
+	npm  install express --save
+	npm install body-parser --save
+	npm install connect-multiparty --save
+	npm install mongoose --save
+	npm install nodemon --save-dev (solo funcionara en desarrollo -dev)
+
+-------------npm start para ejecutar el servidor------------------
+
+7º Creamos archivo index.js
+8º Crear script de inicio dentro de package.json: "start" : "nodemon index.js" (dentro de la seccion de scripts)
+9º así al ejecutar "npm start" en la consola, se ejecutará el nodemon
+
+10º Vamos a la aplicacion Robo3T y creamos la bd, creamos una coleccion y la rellenamos
+
+   {
+    "name" : "Blog",
+    "description" : "Blog personal",
+    "category" : "Informatica",
+    "langs" : [ 
+        "PHP", 
+        "JS", 
+        "CSS"
+    ],
+    "year" : 2013
+}
+
+11º En index.js , escribimos el codigo para establecer la conexion a bd y con el comando "npm start" la establecemos
+ya que lanza el script del package.json
+
+12º con: "http://localhost:3700/" en el navegador podemos acceder
+13º Instalar postman
