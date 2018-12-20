@@ -61,6 +61,23 @@ header  a {
 	transition: all 300ms;
 }*/
 
+
+/* Jumbotron */
+
+.jumbotron { 
+	background: #f8f9fa!important;
+ }
+
+@media (min-width: 576px){
+
+.jumbotron {
+    padding-bottom: 1rem!important;
+}
+
+}
+
+
+
 header a:hover,
  .actived {
 	background: rgba(0,0,0,0.8);
@@ -122,10 +139,15 @@ header a:hover,
 }
 
 #title h2 {
+
 	font-size: 25px;
 	color:gray;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+h2.title-2  {
+	font-family: "finger"!important;
 }
 
 /*article.about {
