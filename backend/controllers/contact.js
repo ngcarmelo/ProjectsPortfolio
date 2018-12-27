@@ -49,7 +49,7 @@ var controller = {
 
 
 
-	}
+	},
 
 	getContact: function(req, res){
 		// Recoger valor que nos viene por la url:
@@ -81,7 +81,19 @@ var controller = {
 
 			return res.status(200).send({contacts});
 		});
-	}
+	},
+
+	deleteContact: function(req, res){
+		var projectId = req.params.id;
+	Contact.findByIdAndRemove(ContactId,(err, contactRemoved) => {
+		if(err) return res.status(500).send({message: 'No se ha podido borrar el contacto'});
+		if(!contactRemoved) return res.status(404).send({message: 'No se puede eliminar ese contacto'});
+		return res.status(200).send({
+			 contact: contactRemoved
+		});
+	});
+
+	},
 
 	
 

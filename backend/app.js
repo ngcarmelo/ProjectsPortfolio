@@ -8,7 +8,7 @@ var app = express();
 
 //cargar archivos rutas, que esta en la carpeta routes
 var project_routes = require('./routes/project');
-//var contact_routes = require('./routes/contact');
+var contact_routes = require('./routes/contact');
 
 
 
@@ -17,6 +17,8 @@ var project_routes = require('./routes/project');
 //convertimos lo que nos llegue por POST en json
 app.use(bodyParser.urlencoded({extended:false}));  
 app.use(bodyParser.json());
+
+
 
 
 // CORPS
@@ -31,7 +33,7 @@ app.use((req, res, next) => {
 
 //rutas 
 app.use('/api', project_routes);
-//app.use('/api', contact_routes);
+app.use('/api', contact_routes);
 
 
 //rutas de prueba

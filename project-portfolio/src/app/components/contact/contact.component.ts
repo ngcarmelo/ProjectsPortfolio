@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   public contact: Contact; //del modelo
   public save_contact;
   public status: string;
-	
+	public title: string;
   
 
   constructor(
@@ -28,8 +28,8 @@ export class ContactComponent implements OnInit {
     )
 
      {
-
-  	
+       this.contact = new Contact('','','','','','');
+      	this.title = "Enviar Mensaje";
    }
 
   ngOnInit() {

@@ -18,6 +18,7 @@ export class ProjectsComponent implements OnInit {
   	private _projectService: ProjectService
   	) { 
   	this.url = Global.url;
+    
   }
 
   ngOnInit() {
