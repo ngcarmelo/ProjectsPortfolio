@@ -1,10 +1,11 @@
 <div class="container">
 	<h2>Proyectos</h2>
-	<ul>
-		<li *ngFor="let project of projects" class="project">
+	<ul class="col-12">
+		<li *ngFor="let project of projects" class="project col-12 col-md-4 col-lg-3">
 			<a [routerLink]="['/proyecto', project._id]">
 			<!-- metodo del backend para obtener imagen -->
-	    <div class="image"><img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt=""></div>
+	  <!-- clase image eliminada -->
+	    <div class="img-responsive"><img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt=""></div>
 		<h3>{{project.name}} </h3>
 		<p>{{project.category}}</p>
 		</a>
