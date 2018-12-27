@@ -5,7 +5,7 @@
 </div>
 
 	
-<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-lg-10">
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
 		<p>
 			<label >Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" class="form-control" required/>

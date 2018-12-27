@@ -220,13 +220,13 @@ form label {
 	margin-bottom: 5px;
 }
 
-form input[type="text"],
+/*form input[type="text"],
 form input[type="number"],
 form input[type="email"],
 form textarea {
 	width: 40%;
 	padding: 5px;
-}
+}*/
 
 form button, 
 form input[type="submit"],
