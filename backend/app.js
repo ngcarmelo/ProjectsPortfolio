@@ -8,6 +8,7 @@ var app = express();
 
 //cargar archivos rutas, que esta en la carpeta routes
 var project_routes = require('./routes/project');
+//var contact_routes = require('./routes/contact');
 
 
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 
 //rutas 
 app.use('/api', project_routes);
+//app.use('/api', contact_routes);
 
 
 //rutas de prueba

@@ -80,13 +80,17 @@ header  a {
 
 header a:hover,
  .actived {
-	background: rgba(0,0,0,0.8);
+	/*background: rgba(0,0,0,0.8);*/
+	font-family: "finger";
+
+
 }
 
 /* Logotipo */
  #logo {
  	font-family: "finger";
  	font-size: 30px;
+ 	padding-top: 0px;
  }
 
 #logo a {
@@ -149,6 +153,12 @@ header a:hover,
 h2.title-2  {
 	font-family: "finger"!important;
 }
+
+h1 {
+	font-family: "finger"!important;
+
+}
+
 
 /*article.about {
 	width: 70%;

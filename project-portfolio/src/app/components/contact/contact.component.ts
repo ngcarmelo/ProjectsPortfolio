@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Contact } from '../../models/contact';
+import { ContactService } from '../../services/contact.service';
+
 
  //declare var jQuery:any;
  declare var $:any;
@@ -6,41 +10,57 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
+  providers: [ContactService]
+
 })
 export class ContactComponent implements OnInit {
-	public widthSlider: number;
-	public anchuraToSlider: any;
-	public captions:boolean;
-	public autor: any;
+  public contact: Contact; //del modelo
+  public save_contact;
+  public status: string;
+	
+  
 
-   //para acceder a los elementos que llevan delante #, ejemplo: #textos
-	@ViewChild('textos') textos
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _contactService: ContactService
+    )
 
-  constructor() {
+     {
 
-  	this.captions = false;
+  	
    }
 
   ngOnInit() {
-  	var opcion_clasica = document.querySelector('#texto').innerHTML;
-  	//console.log(this.textos.nativeElement.textContent);
-
+  	
     }
 
-  cargarSlider(){
-  	this.anchuraToSlider = this.widthSlider;
+
+ onSubmit(form){
+    //Metodo del Sercivio userService:
+    //Como nos devuelve un observable utilizamos subscribe
+    this._contactService.saveContact(this.contact).subscribe(
+      response => {
+        if(response.user && response.user._id){
+          //console.log(response.user);
+
+          this.status = 'success';
+          form.reset(); //reseteamos el formulario
+
+        }else {
+        this.status ='error';          
+        }
+      },
+      error => {
+        console.log(<any>error);
+
+      }
+
+      );
 
   }
- resetearSlider(){
-  	this.anchuraToSlider = false;
+ 
 
-  }
-
-  getAutor(event){
-  	console.log('metodo get Autor');
-  	console.log(event);
-  	this.autor = event;
-
-  }
+  
 }
