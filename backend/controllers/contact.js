@@ -10,6 +10,11 @@ var fs = require('fs');
 //para poder cargar rutas fisicas:
 var path = require('path');
 
+var moment = require('moment');
+
+const nodemailer = require('nodemailer');
+
+
 var controller = {
 	home: function(req,res){
 		return res.status(200).send({
@@ -33,9 +38,41 @@ var controller = {
 		contact.surname = params.surname;
 		contact.email = params.email;
 		contact.text = params.text;
-		contact.created_at = params.created_at;
+		contact.created_at = moment().unix();
+		//contact.created_at = params.created_at;
 
 		//para guardarlo en la bd:
+
+
+//Enviar email además
+			
+			
+			//  var transporter = nodemailer.createTransport({
+			//  host: 'smtp.gmail.com',
+			// port: 465,
+   // 			secure: true, // use SSL
+			//  auth: {
+			//  user: 'ng.carmelo@gmail.com', // Cambialo por tu email
+			//  pass: '17452759zamra' // Cambialo por tu password
+			//  }
+			//  });
+		
+			// const mailOptions = {
+			//   from: 'sender@email.com', // sender address
+			//   to: 'ng.carmelo@gmail.com', // list of receivers
+			//   subject: 'Subject of your email', // Subject line
+			//   html: '<p>Your html here</p>'// plain text body
+			// };
+
+			// transporter.sendMail(mailOptions, function (err, info) {
+			//  if (err)
+			//  return console.log(err);
+			
+			//  else
+			//  console.log('Message sent: ' + info.response);
+			//  });
+			
+			//Fin del envio del email
 
 
 
@@ -45,6 +82,16 @@ var controller = {
 
 			return res.status(200).send({contact: contactStored});
 		});
+
+
+
+	
+
+
+
+
+
+
 
 
 
