@@ -33,6 +33,16 @@
         <a class="nav-link" [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a>
         
       </li>
+
+        <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Leer Mensajes</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="!identity">Login</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="!identity">Register</a>
+      </li>
      </ul>
    </div>
 </nav>

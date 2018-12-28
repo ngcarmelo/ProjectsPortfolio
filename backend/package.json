@@ -10,11 +10,14 @@
   "author": "Carmelo",
   "license": "MIT",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
-    "connect-multiparty": "^2.1.1",
+    "connect-multiparty": "^2.2.0",
     "express": "^4.16.3",
+    "jwt-simple": "^0.5.5",
     "moment": "^2.23.0",
     "mongoose": "^5.4.0",
+    "mongoose-pagination": "^1.0.0",
     "nodemailer": "^4.7.0"
   },
   "devDependencies": {

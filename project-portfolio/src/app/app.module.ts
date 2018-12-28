@@ -17,6 +17,8 @@ import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { ResaltadoDirective } from './resaltado.directive';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 //import * as $ from 'jquery';
 
@@ -34,7 +36,9 @@ import { ResaltadoDirective } from './resaltado.directive';
     DetailComponent,
     EditComponent,
     SliderComponent,
-    ResaltadoDirective
+    ResaltadoDirective,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
