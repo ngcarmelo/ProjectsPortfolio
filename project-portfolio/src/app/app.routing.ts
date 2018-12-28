@@ -12,6 +12,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { EditComponent } from './components/edit/edit.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -25,6 +26,8 @@ const appRoutes: Routes = [
 {path: 'proyecto/:id', component: DetailComponent}, 
 {path: 'editar-proyecto/:id', component: EditComponent}, 
 {path: 'register', component:RegisterComponent}, 
+{path: 'login', component:LoginComponent}, 
+
 {path: '**', component: ErrorComponent}
 ];
 

@@ -27,7 +27,7 @@
         <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" id="logo">CN</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">Crear Proyectos</a>
+        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Crear Proyectos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a>
@@ -38,10 +38,10 @@
         <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Leer Mensajes</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="!identity">Login</a>
+        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['actived']" *ngIf="!identity">Login</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="!identity">Register</a>
+        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="identity">Register</a>
       </li>
      </ul>
    </div>
