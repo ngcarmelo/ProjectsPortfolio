@@ -20,7 +20,7 @@ export class ContactComponent implements OnInit {
   public save_contact;
   public status: string;
 	public title: string;
-  public identity: string;
+  
   
 
   constructor(
@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit {
    }
 
   ngOnInit() {
-      this.identity = this._userService.getIdentity();
+   
   	
     }
 

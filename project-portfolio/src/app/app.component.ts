@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+
 import { User } from './models/user';
 
 //Importamos el servicio, donde están los metodos
@@ -26,8 +27,7 @@ constructor(
     private _userService: UserService //Variable del servicio UserService
     ) {
 
- 	 
-  
+ 	   
    }
 
    ngOnInit(){
@@ -37,7 +37,11 @@ constructor(
 
   }
 
-
+ ngDoCheck(){
+    
+        this.identity = this._userService.getIdentity();
+      
+  }
 
 
 
