@@ -1,0 +1,28 @@
+<p>
+  messages works!
+</p>
+
+
+<div class="container">
+	<h2 class="title-2">Mensajes Contactos</h2>
+	<div class="row">
+	<ul class="col-12 pt-5">
+		<li *ngFor="let contact of contacts" class="project col-12">
+		<!-- 	<a [routerLink]="['/proyecto', project._id]"> -->
+			
+	 
+	  
+		<h3>{{contact.name}} |{{contact.surname}}  </h3>
+		<p>{{contact.email}}</p>
+		<p>{{contact.text}}</p>
+		<p>{{contact.created_at}}</p>
+
+
+
+
+		<!-- </a> -->
+	</li>
+	</ul>
+</div>
+</div>
+
