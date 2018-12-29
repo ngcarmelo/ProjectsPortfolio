@@ -20,6 +20,7 @@ import { ResaltadoDirective } from './resaltado.directive';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { DetailMessageComponent } from './components/detail-message/detail-message.component';
 
 //import * as $ from 'jquery';
 
@@ -40,7 +41,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     ResaltadoDirective,
     LoginComponent,
     RegisterComponent,
-    MessagesComponent
+    MessagesComponent,
+    DetailMessageComponent
   ],
   imports: [
     BrowserModule,

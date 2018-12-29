@@ -14,6 +14,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { DetailMessageComponent } from './components/detail-message/detail-message.component';
 
 
 
@@ -29,6 +30,8 @@ const appRoutes: Routes = [
 {path: 'register', component:RegisterComponent}, 
 {path: 'login', component:LoginComponent}, 
 {path: 'messages', component:MessagesComponent}, 
+{path: 'message/:id', component:DetailMessageComponent}, 
+
 
 {path: '**', component: ErrorComponent}
 ];

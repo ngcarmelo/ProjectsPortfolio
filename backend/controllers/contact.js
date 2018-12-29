@@ -131,8 +131,8 @@ var controller = {
 	},
 
 	deleteContact: function(req, res){
-		var projectId = req.params.id;
-	Contact.findByIdAndRemove(ContactId,(err, contactRemoved) => {
+		var contactId = req.params.id;
+	Contact.findByIdAndRemove(contactId,(err, contactRemoved) => {
 		if(err) return res.status(500).send({message: 'No se ha podido borrar el contacto'});
 		if(!contactRemoved) return res.status(404).send({message: 'No se puede eliminar ese contacto'});
 		return res.status(200).send({
