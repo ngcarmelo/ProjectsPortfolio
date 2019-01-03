@@ -23,7 +23,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { DetailMessageComponent } from './components/detail-message/detail-message.component';
 
 import {  TruncatePipe }   from './pipes/limitTo.pipe';
-
+import { MomentModule} from 'angular2-moment';   
 
 //import * as $ from 'jquery';
 
@@ -52,7 +52,8 @@ import {  TruncatePipe }   from './pipes/limitTo.pipe';
     BrowserModule,
     routing,  //importamos aqui porque es un modulo
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ],
   providers: [
   appRoutingProviders  //importamos aqui porque es un servicio

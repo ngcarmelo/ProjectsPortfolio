@@ -30,7 +30,7 @@
 <div class="row">
 		<h3 class="col-12 col-md-4">{{contact.name}} {{contact.surname}}</h3>
 		<p  class="col-12 col-md-4">{{contact.text  | limitTo : 40 }}</p>
-		<p  class="col-12 col-md-4">{{contact.created_at}}</p>
+		<p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'es' | amTimeAgo }}</p>
 		</div>
 	</a>
 
