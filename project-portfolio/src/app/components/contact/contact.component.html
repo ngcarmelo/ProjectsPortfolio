@@ -1,48 +1,54 @@
 <div class="container">
-	<h1>Contacto</h1>
+	<h2 class="title-2">Contacto</h2>
 <div id="texto">
 <p>Esta es la pagina de contacto,puedes enviarnos cualquier duda</p>
 </div>
 
 	
 <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
-		<p>
-			<label >Nombre</label>
+		<div class="form-group">
+			<label for="name" >Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" class="form-control" required/>
-			<span *ngIf="!name.valid && name.touched">
-				El nombre es obligatorio!!
+			<small class="form-text text-muted" *ngIf="!name.valid && name.touched">
+				El nombre es obligatorio!
 				
-			</span>
-			</p>
-				<p>
-			<label >Apellidos</label>
+			</small>
+			</div>
+
+	<!--  <div class="form-group">
+   		 <label for="name">Nombre</label>
+   		 <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name" required placeholder="Enter name">
+   		 <small id="" class="form-text text-muted" *ngIf="name.touched && !name.valid">El nombre es obligatorio</small>
+		</div> -->
+
+		<div class="form-group">
+			<label for="surname" >Apellidos</label>
 			<input type="text" name="surname" #surname="ngModel" [(ngModel)]="contact.surname" class="form-control" required/>
-			<span *ngIf="!surname.valid && surname.touched">
-				El Apellido es obligatorio!!
-				
-			</span>
-		
-		</p>
+			<small class="form-text text-muted" *ngIf="!surname.valid && surname.touched">
+				El Apellido es obligatorio!
+			</small>
+		</div>
+
 
 	
-		<p>
-			<label >Email</label>
+		<div class="form-group">
+			<label for="email" >Email</label>
 			<input type="email" name="email" #email="ngModel" [(ngModel)]="contact.email"
 			 class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-			<span *ngIf="!email.valid && email.touched">
-				El Email es obligatorio!!
+			<small class="form-text text-muted"  *ngIf="!email.valid && email.touched">
+				El Email es obligatorio!
 				
-			</span>
+			</small>
 		
-		</p>
+		</div>
 
-		<p>
-			<label>Motivo del email</label>
+		<div class="form-group">
+			<label for="text">Motivo del email</label>
 			<textarea name="text" #text="ngModel" [(ngModel)]="contact.text" class="form-control" required ></textarea>
-			<span *ngIf="!text.valid && text.touched">
-				El texto de la publicacion es obligatorio
-			</span>
-		</p>
+			<small class="form-text text-muted" *ngIf="!text.valid && text.touched">
+				El movtivo del email es obligatorio!
+			</small>
+		</div>
 
 				
 	<input type="submit" value="{{title}}" [disabled]="!registerForm.form.valid" class="btn btn-success" 

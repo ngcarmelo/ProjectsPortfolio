@@ -1,7 +1,7 @@
 <!-- incluimos el *ngIf="project" para que solo lo carge cuando tenga project  -->
 <!-- Ya que ahora el componente edit redirige a esta vista tambien -->
 <div class="container" *ngIf="project">
-	<h2>{{title}}</h2>
+	<h2 class="title-2">{{title}}</h2>
 	<div class="alert-success" *ngIf="status == 'success' ">
 		El proyecto se ha creado correctamente, puedes verlo <a [routerLink]="['/proyecto', save_project._id]">aquí</a>  
 	</div>
@@ -11,7 +11,7 @@
 
 
 	<!-- incluimos 'projectForm dentro dle onSubmit para poder resetearlo' -->
-	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" >
+	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" class="col-md-6" >
 	
 		
 	 <div class="form-group">
