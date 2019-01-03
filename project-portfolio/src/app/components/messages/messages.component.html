@@ -27,10 +27,12 @@
 		
 			<a [routerLink]="['/message', contact._id]">
 	 
-<div class="row">
+<div class="row ">
 		<h3 class="col-12 col-md-4">{{contact.name}} {{contact.surname}}</h3>
 		<p  class="col-12 col-md-4">{{contact.text  | limitTo : 40 }}</p>
-		<p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'es' | amTimeAgo }}</p>
+		<!-- <p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'es' | amTimeAgo }} </p> -->
+		<p  class="col-12 col-md-4">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }} </p>
+		
 		</div>
 	</a>
 

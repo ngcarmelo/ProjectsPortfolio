@@ -1,22 +1,18 @@
-<p>
-  detail-message works!
-</p>
 
 <div *ngIf="contact" class="container">
 
- 
-
-
   	<div class="data">
-   <h1>{{contact.name}}</h1>
-	<h3>{{contact.surname}}</h3>
-	<p>{{contact.email}}</p>
-	<p>{{contact.text}}</p>
-	<p>{{contact.created_at}}</p>
+    <h2 class="title-2">{{contact.name}} {{contact.surname}}</h2>
+	<h2 class="title-2">{{contact.email}}</h2>
+	<h2 class="title-2">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }}</h2>
+	<p class="col-12 ">{{contact.text}}</p>
+	
 
-	<p *ngIf="confirm == false">
-		<a [routerLink]="['/editar-contact', contact._id]" class="button-edit">Editar</a>
-		<a (click)="setConfirm(true)" class="button-delete">Borrar</a>
+	<p *ngIf="confirm == false" class="col-12 col-md-6">
+		<!-- <a [routerLink]="['/editar-contact', contact._id]" class="button-edit">Editar</a> -->
+		<a  [routerLink]="['/editar-contact', contact._id]" class="btn btn-warning button-edit">Editar</a>
+		<!-- <a (click)="setConfirm(true)" class="button-delete">Borrar</a> -->
+		<a  (click)="setConfirm(true)" class="btn btn-danger button-delete">Borrar</a>
 	</p>
 
 	<p *ngIf="confirm == true">
