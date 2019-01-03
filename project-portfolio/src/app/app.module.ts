@@ -22,6 +22,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { DetailMessageComponent } from './components/detail-message/detail-message.component';
 
+import {  TruncatePipe }   from './pipes/limitTo.pipe';
+
+
 //import * as $ from 'jquery';
 
  declare var jQuery:any;
@@ -42,7 +45,8 @@ import { DetailMessageComponent } from './components/detail-message/detail-messa
     LoginComponent,
     RegisterComponent,
     MessagesComponent,
-    DetailMessageComponent
+    DetailMessageComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

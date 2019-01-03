@@ -312,6 +312,10 @@ form input[disabled]{
 	margin-bottom: 30px;
 }
 
+
+
+
+
 .project .image {
 	width: 100%;
 	height: 150px;
@@ -332,6 +336,33 @@ form input[disabled]{
 	font-weight: bold;
 	margin-top: 20px;
 }
+
+
+/* Listado  de mensajes de los (contactos)  */
+
+.list-messages {
+	list-style: none;
+	display: block;
+	/*float: left;*/
+	/*width: 28%;*/
+	text-align: center;
+/*	margin-left: 20px;
+	margin-right: 20px;*/
+	/*margin-bottom: 30px;*/
+}
+
+.list-messages a {
+	text-decoration: none;
+	color: black;
+}
+
+.list-messages a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+
+
 
 
 
