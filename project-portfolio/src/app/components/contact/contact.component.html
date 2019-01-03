@@ -1,10 +1,20 @@
 <div class="container">
 	<h2 class="title-2">Contacto</h2>
-<div id="texto">
+<div id="">
 <p>Esta es la pagina de contacto,puedes enviarnos cualquier duda</p>
 </div>
 
-	
+<div class="alert alert-success" *ngIf="status =='success'">
+			El mensaje se ha enviado correctamente  
+		
+	</div>
+
+<div class="alert alert-danger" *ngIf="status =='error'">
+		El mensaje no se ha podido enviar 
+		
+	</div>
+
+
 <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
 		<div class="form-group">
 			<label for="name" >Nombre</label>

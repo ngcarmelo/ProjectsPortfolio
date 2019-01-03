@@ -46,10 +46,12 @@ export class ContactComponent implements OnInit {
     //Como nos devuelve un observable utilizamos subscribe
     this._contactService.saveContact(this.contact).subscribe(
       response => {
-        if(response.user && response.user._id){
+        if(response.contact && response.contact._id){
           //console.log(response.user);
 
           this.status = 'success';
+          console.log('valor status en contact');
+          console.log(this.status);
           form.reset(); //reseteamos el formulario
 
         }else {
