@@ -30,10 +30,10 @@
 			<a [routerLink]="['/message', contact._id]" class="card-link">
 	 
 <div class="row ">
-		<h3 class="col-12 col-md-4 card-title">{{contact.name}} {{contact.surname}}</h3>
-		<p  class="col-12 col-md-4 card-text">{{contact.text  | limitTo : 40 }}</p>
+		<h3 class="col-12 col-md-4 card-title title-2 ">{{contact.name}} {{contact.surname}}</h3>
+		<p  class="col-12 col-md-4 card-text title-2">{{contact.text  | limitTo : 40 }}</p>
 		<!-- <p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'es' | amTimeAgo }} </p> -->
-		<p  class="col-12 col-md-4 card-text">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }} </p>
+		<p  class="col-12 col-md-4 card-text title-2">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }} </p>
 		
 		</div>
 	</a>

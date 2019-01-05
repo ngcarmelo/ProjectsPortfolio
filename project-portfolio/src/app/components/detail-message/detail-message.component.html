@@ -3,11 +3,12 @@
 <div *ngIf="contact" class="container">
 <div class="row">	
 <div class="col-12">	
-  	<div class="data">
-    <h3 class="title">{{contact.name}} {{contact.surname}}</h3>
-	<h3 class="title">{{contact.email}}</h3>
-	<h3 class="title">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }}</h3>
-	<p class="col-12 ">{{contact.text}}</p>
+  	<div class="data card">
+  		<div class="card-body">
+    <h3 class="title-email card-title">{{contact.name}} {{contact.surname}}</h3>
+	<h3 class="title-email card-title">{{contact.email}}</h3>
+	<h3 class="title-email card-title">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }}</h3>
+	<p class="col-12 card-text ">{{contact.text}}</p>
 	
 
 	<p *ngIf="confirm == false" class="col-12 col-md-2">
@@ -22,6 +23,8 @@
 		<a (click)="setConfirm(false)" class="btn btn-warning button-edit">Cancelar</a>
 		<a (click)="deleteContact(contact._id)" class="btn btn-danger button-delete">Eliminar Def.</a>
 	</p>
+
+	</div>
 </div>
 </div>
 </div>

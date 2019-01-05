@@ -10,7 +10,7 @@
 	</div>
 
 
-	<!-- incluimos 'projectForm dentro dle onSubmit para poder resetearlo' -->
+	<!-- incluimos 'projectForm dentro del onSubmit para poder resetearlo' -->
 	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" class="col-md-6" >
 	
 		
@@ -49,7 +49,7 @@
 	 <div class="form-group">
     	<label for="image">Imagen del proyecto</label>
     	<span class="image" *ngIf="project.image" style="float:none;">
-			<img  src="{{url+'get-image/'+project.image}}" style="width: 100px; " alt="">
+			<img  src="{{url+'get-image/'+project.image}}" style="width: 100px; margin-bottom: 10px; " alt="">
 		</span>
 
   	   <input type="file" name="image" placeholder="Subir imagen" (change)="fileChangeEvent($event)"  class="form-control-file">
