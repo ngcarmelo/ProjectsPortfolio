@@ -256,7 +256,7 @@ form input[type="submit"],
 .button-edit,
 .button-delete{
 	text-align: center;
-	width: 40%;
+	width: 100%;
 	float: left;
 	margin-right: 10px;
 	text-decoration: none;

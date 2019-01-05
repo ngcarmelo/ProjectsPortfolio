@@ -1,6 +1,8 @@
 
-<div *ngIf="contact" class="container">
 
+<div *ngIf="contact" class="container">
+<div class="row">	
+<div class="col-12">	
   	<div class="data">
     <h3 class="title">{{contact.name}} {{contact.surname}}</h3>
 	<h3 class="title">{{contact.email}}</h3>
@@ -8,17 +10,19 @@
 	<p class="col-12 ">{{contact.text}}</p>
 	
 
-	<p *ngIf="confirm == false" class="col-12 col-md-6">
+	<p *ngIf="confirm == false" class="col-12 col-md-2">
 		<!-- <a [routerLink]="['/editar-contact', contact._id]" class="button-edit">Editar</a> -->
 		<!-- <a  [routerLink]="['/editar-contact', contact._id]" class="btn btn-warning button-edit">Editar</a> -->
 		<!-- <a (click)="setConfirm(true)" class="button-delete">Borrar</a> -->
-		<a  (click)="setConfirm(true)" class="btn btn-danger button-delete">Borrar</a>
+		<button  (click)="setConfirm(true)" class="btn btn-danger button-delete">Borrar</button>
 	</p>
 
-	<p *ngIf="confirm == true">
+	<p *ngIf="confirm == true" class="col-12 col-md-2">
 		<span class="confirm">¿Estas seguro de eliminar este mensaje? </span>
-		<a (click)="setConfirm(false)" class="button-edit">Cancelar</a>
-		<a (click)="deleteContact(contact._id)" class="button-delete">Eliminar Definitivamente</a>
+		<a (click)="setConfirm(false)" class="btn btn-warning button-edit">Cancelar</a>
+		<a (click)="deleteContact(contact._id)" class="btn btn-danger button-delete">Eliminar Def.</a>
 	</p>
+</div>
+</div>
 </div>
 </div>
