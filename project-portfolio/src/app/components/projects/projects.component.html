@@ -2,15 +2,24 @@
 	<h2 class="title-2">Proyectos</h2>
 	<div class="row">
 	<ul class="col-12 pt-5">
+		<div class="card-deck">
 		<li *ngFor="let project of projects" class="project col-12 col-md-4 col-lg-3">
+
+			
+			<div class="card h-100 bg-light mb-3  border-light">
 			<a [routerLink]="['/proyecto', project._id]">
 			<!-- metodo del backend para obtener imagen -->
 	  <!-- clase image eliminada -->
-	    <div class="img-responsive"><img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt=""></div>
-		<h3>{{project.name}} </h3>
-		<p>{{project.category}}</p>
+	    <div class="img-responsive card-img-top"><img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt=""></div>
+	    <div class="card-body">
+		<h3 class="card-title">{{project.name}} </h3>
+		<p class="card-text">{{project.category}}</p>
+		</div>
 		</a>
+		</div>
+		
 	</li>
+	</div>
 	</ul>
 </div>
 </div>

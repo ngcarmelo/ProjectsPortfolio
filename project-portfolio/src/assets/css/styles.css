@@ -168,7 +168,11 @@ h3.title {
 	margin-bottom: 15px;
 }
 
+p.title {
 
+		font-family: "finger"!important;
+
+}
 
 
 
@@ -200,8 +204,8 @@ h3.title {
 }
 
 .container .image {
- 	float: left;
- 	width: 47%;
+ /*	float: left;
+ 	width: 47%;*/
 }
 
 .container .image img {
@@ -360,7 +364,7 @@ form input[disabled]{
 	text-align: center;
 /*	margin-left: 20px;
 	margin-right: 20px;*/
-	/*margin-bottom: 30px;*/
+	margin-bottom: 30px;
 }
 
 .list-messages a {
@@ -373,7 +377,11 @@ form input[disabled]{
 	color: black;
 }
 
+.card-deck a:hover {
+	text-decoration: none;
+	color: black;
 
+}
 
 
 
