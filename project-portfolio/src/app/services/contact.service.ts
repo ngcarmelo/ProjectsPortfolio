@@ -8,6 +8,11 @@ import { Global } from './global';
 export class ContactService {
 	public url: string;
 
+
+
+	public identity;
+	public token;
+
 	constructor(
 		private _http: HttpClient
 		){
@@ -33,13 +38,27 @@ export class ContactService {
 	}
 
 	//para obtener los proyectos
-	getContacts():Observable<any>{
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		//Peticion ajax:
-		return this._http.get(this.url+'contacts', {headers:headers});
+	// getContacts():Observable<any>{
+	// 	let headers = new HttpHeaders().set('Content-Type', 'application/json');
+	// 	//Peticion ajax:
+	// 	return this._http.get(this.url+'contacts', {headers:headers});
+
+	// }
 
 
-	}
+getContacts(page = null):Observable<any>{
+
+	let headers = new HttpHeaders().set('Content-Type','application/json') //forma en que se envian los datos
+								    	.set('Authorization',this.getToken()); 	//sacamos el token del localStorage
+
+		return this._http.get(this.url+'contacts/'+page, {headers: headers});
+
+ }
+
+
+
+
+
 
 	getContact(id):Observable<any>{
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -57,5 +76,49 @@ export class ContactService {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 	return this._http.put(this.url+'contact/'+contact._id, params, {headers:headers})
 	}
+
+
+
+//Metodos para obtener los datos del localStorage, valores de usuario y token logeado
+	getIdentity(){
+
+		//El string del localstorage lo convertimos a un objeto JSON
+		let identity = JSON.parse(localStorage.getItem('identity'));
+
+
+
+		 if(identity != "undefined"){
+		
+			//console.log('existe identity');
+			this.identity = identity;
+		//	console.log(this.identity);
+		}else {
+		//	console.log('identity es nulo');
+			this.identity = null;
+		}
+		return this.identity;
+	}
+
+	getToken(){
+		let token = localStorage.getItem('token');
+
+		if(token != "undefined"){
+			this.token = token;
+		}else {
+			this.token = null;
+		}
+		return this.token;
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 }

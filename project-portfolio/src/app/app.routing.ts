@@ -30,6 +30,7 @@ const appRoutes: Routes = [
 {path: 'register', component:RegisterComponent}, 
 {path: 'login', component:LoginComponent}, 
 {path: 'messages', component:MessagesComponent}, 
+{path: 'messages/:page', component: MessagesComponent},
 {path: 'message/:id', component:DetailMessageComponent}, 
 
 

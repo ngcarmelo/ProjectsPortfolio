@@ -4,6 +4,10 @@ import { Contact } from '../../models/contact';
 import { ContactService } from '../../services/contact.service';
 import { Global } from '../../services/global';
 
+//para poder acceder a los parametros que recibamos de esta url y redirecciones:
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -15,9 +19,19 @@ export class MessagesComponent implements OnInit {
 
 	public contacts: Contact[];
 	public url: string;
+  public status: string;
+
+  //variables pagination
+  public page;
+  public next_page;
+  public prev_page;
+  public total;
+  public pages;
 
   constructor(
-  	  	private _contactService: ContactService
+  	  	private _contactService: ContactService,
+        private _route: ActivatedRoute,
+        private _router: Router,
 	) {
 
   	this.url = Global.url;
@@ -26,24 +40,90 @@ export class MessagesComponent implements OnInit {
 
    ngOnInit() {
 
-  	this.getContacts();
+  	//this.getContacts();
+
+
+      this.actualPage();
   }
 
-  getContacts(){
-  	this._contactService.getContacts().subscribe(
-  		response => {
-  			//console.log(response);
-  			if(response.contacts){
-  				//guardamos la respuesta en la variable creada
-  				this.contacts = response.contacts
+
+ actualPage(){
+    
+    this._route.params.subscribe(params =>{
+      let page = +params['page']; 
+      this.page = page;
+
+      if(!params['page']){
+        page =1;
+      }
+
+      if(!page) {
+        page =1
+      }else{
+        this.next_page = page+1;
+        this.prev_page = page+1;
+
+        if(this.prev_page <=0){
+          this.prev_page =1;
+        }
+      }
+    
+     this.getContacts(page);
+
+    });
+
+  }
+
+
+
+
+getContacts(page){
+    this._contactService.getContacts(page).subscribe(
+      response =>{
+        if(!response.contacts){
+          this.status='status';
+        }else {
+          console.log(response);
+         this.total = response.total;
+         this.contacts = response.contacts;
+         this.pages = response.pages;
+        
+         if(page > this.pages){
+           this._router.navigate(['/messages',1]); 
+         }
+
+        }
+
+    },error =>{
+        var errorMessage = <any>error;
+        console.log(errorMessage);
+
+        if(errorMessage != null){
+          this.status ='error';
+        }
+    });
+
+  }
+
+
+
+
+
+  // getContacts(){
+  // 	this._contactService.getContacts().subscribe(
+  // 		response => {
+  // 			//console.log(response);
+  // 			if(response.contacts){
+  // 				//guardamos la respuesta en la variable creada
+  // 				this.contacts = response.contacts
          
-  			}
-  		},
-  		error => {
-  			console.log(<any>error);
-  		});
+  // 			}
+  // 		},
+  // 		error => {
+  // 			console.log(<any>error);
+  // 		});
 
-  }
+  // }
 
 
 }

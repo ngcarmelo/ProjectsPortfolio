@@ -18,7 +18,9 @@ router.post('/test-contact', ContactController.test);
 
 router.post('/save-contact', ContactController.saveContact);
 router.get('/contact/:id?', ContactController.getContact);
-router.get('/contacts', ContactController.getContacts);
+//router.get('/contacts', ContactController.getContacts);
+router.get('/contacts/:page?', ContactController.getContacts);
+
 //es put, porque es para modificar/actualizar la bd
 //router.put('/contact/:id', ContactController.updateContact);
 router.delete('/contact/:id', ContactController.deleteContact);

@@ -91,11 +91,6 @@ var controller = {
 
 
 
-
-
-
-
-
 	},
 
 	getContact: function(req, res){
@@ -119,16 +114,48 @@ var controller = {
 
 	},
 
-	getContacts: function(req, res){
-		//opcional .sort('year')
-		//con find buscamos todos los projectos porque no hemos filtrado nada
-		Contact.find({}).sort('year').exec((err, contacts) =>{
-			if(err) return res.status(500).send({message: 'Error al devolver'});
-			if(!contacts) return res.status(404).send({message: 'No hay contactos que mostrar'});
+	// getContacts: function(req, res){
+	// 	//opcional .sort('year')
+	// 	//con find buscamos todos los projectos porque no hemos filtrado nada
+	// 	Contact.find({}).sort('year').exec((err, contacts) =>{
+	// 		if(err) return res.status(500).send({message: 'Error al devolver'});
+	// 		if(!contacts) return res.status(404).send({message: 'No hay contactos que mostrar'});
 
-			return res.status(200).send({contacts});
+	// 		return res.status(200).send({contacts});
+	// 	});
+	// },
+
+
+//ini modificada
+ getContacts: function(req, res){
+
+
+	var page = 1;
+	if(req.params.page){
+		page = req.params.page;
+
+		}
+		var itemsPerPage = 5;
+		
+			Contact.find({}).sort('year').paginate(page, itemsPerPage,(err, contacts, total) =>{
+			if(err) return res.status(500).send({message: 'Error en la peticion'});
+					if(!contacts) return res.status(404).send({message: 'No hay contactos en la plataforma'});
+					return res.status(200).send({
+							total,
+							pages:  Math.ceil(total/itemsPerPage),
+							contacts
+						});
 		});
-	},
+
+
+		
+},
+
+//fin modificada
+
+
+
+
 
 	deleteContact: function(req, res){
 		var contactId = req.params.id;
