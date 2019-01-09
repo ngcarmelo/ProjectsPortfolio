@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { DetailMessageComponent } from './components/detail-message/detail-message.component';
 
+//Guard:
+import { UserGuard } from  './services/user.guard';
 
 
 //cada ruta con su componente
@@ -23,15 +25,15 @@ const appRoutes: Routes = [
 {path: '', component: AboutComponent},
 {path: 'sobre-mi', component: AboutComponent},
 {path: 'proyectos', component: ProjectsComponent},
-{path: 'crear-proyecto', component: CreateComponent},
+{path: 'crear-proyecto', component: CreateComponent,  canActivate:[UserGuard]},
 {path: 'contacto', component: ContactComponent}, 
 {path: 'proyecto/:id', component: DetailComponent}, 
-{path: 'editar-proyecto/:id', component: EditComponent}, 
+{path: 'editar-proyecto/:id', component: EditComponent,  canActivate:[UserGuard]}, 
 {path: 'register', component:RegisterComponent}, 
 {path: 'login', component:LoginComponent}, 
-{path: 'messages', component:MessagesComponent}, 
-{path: 'messages/:page', component: MessagesComponent},
-{path: 'message/:id', component:DetailMessageComponent}, 
+{path: 'messages', component:MessagesComponent, canActivate:[UserGuard]}, 
+{path: 'messages/:page', component: MessagesComponent,  canActivate:[UserGuard]},
+{path: 'message/:id', component:DetailMessageComponent,  canActivate:[UserGuard]}, 
 
 
 {path: '**', component: ErrorComponent}

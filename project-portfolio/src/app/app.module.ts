@@ -25,6 +25,13 @@ import { DetailMessageComponent } from './components/detail-message/detail-messa
 import {  TruncatePipe }   from './pipes/limitTo.pipe';
 import { MomentModule} from 'angular2-moment';   
 
+//Servicios  **necesarios para utilizar guards
+import { UserService } from './services/user.service';
+import { UserGuard } from  './services/user.guard';
+
+
+
+
 //import * as $ from 'jquery';
 
  declare var jQuery:any;
@@ -56,7 +63,9 @@ import { MomentModule} from 'angular2-moment';
     MomentModule
   ],
   providers: [
-  appRoutingProviders  //importamos aqui porque es un servicio
+  appRoutingProviders,  //importamos aqui porque es un servicio
+  UserService,
+  UserGuard
   ],
   bootstrap: [AppComponent]
 })
