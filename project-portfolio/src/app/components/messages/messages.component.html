@@ -1,6 +1,6 @@
 <div class="container">
 
-	<h2 class="title-2">Mensajes Contactos</h2>
+	<h2 class="title">Mensajes Contactos</h2>
 	<div class="row">
 	<!-- <ul class="col-12 pt-5">
 		<li *ngFor="let contact of contacts" class="project col-12">
@@ -30,10 +30,10 @@
 			<a [routerLink]="['/message', contact._id]" class="card-link">
 	 
 <div class="row ">
-		<h3 class="col-12 col-md-4 card-title title-2 ">{{contact.name}} {{contact.surname}}</h3>
-		<p  class="col-12 col-md-4 card-text title-2">{{contact.text  | limitTo : 40 }}</p>
+		<h3 class="col-12 col-md-4 card-title field-name">{{contact.name}} {{contact.surname}}</h3>
+		<p  class="col-12 col-md-4 card-text field-message">{{contact.text  | limitTo : 40 }}</p>
 		<!-- <p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'es' | amTimeAgo }} </p> -->
-		<p  class="col-12 col-md-4 card-text title-2">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }} </p>
+		<p  class="col-12 col-md-4 card-text field-message">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }} </p>
 		
 		</div>
 	</a>
@@ -47,13 +47,15 @@
 
 
 <!-- page: pagina actual, pages: total paginas -->
-	<ul class="pagination pull-right">
+	
+	<nav aria-label="Page navigation pagination">
+	<ul class="pagination pull-right col-12 pagination-lg justify-content-center">
 			
-			<li *ngIf="page > 1"><a [routerLink]="['/messages', prev_page]">Anterior</a></li>
-			<li *ngIf="pages != page"><a [routerLink]="['/messages', next_page]">Siguiente</a></li>
+			<li class="page-item" *ngIf="page > 1"><a class="page-link" [routerLink]="['/messages', prev_page]">Anterior</a></li>
+			<li class="page-item" *ngIf="pages != page"><a class="page-link" [routerLink]="['/messages', next_page]">Siguiente</a></li>
 		</ul>
 
-
+	</nav>
 
 	</ul>
 

@@ -5,10 +5,10 @@
 <div class="col-12">	
   	<div class="data card">
   		<div class="card-body">
-    <h3 class="title-email card-title">{{contact.name}} {{contact.surname}}</h3>
-	<h3 class="title-email card-title">{{contact.email}}</h3>
-	<h3 class="title-email card-title">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }}</h3>
-	<p class="col-12 card-text ">{{contact.text}}</p>
+    <h3 class="title-message-detail card-title">{{contact.name}} {{contact.surname}}</h3>
+	<h3 class="title-message-detail card-title">{{contact.email}}</h3>
+	<h3 class="title-message-detail card-title">{{contact.created_at.date | amLocale: 'es' | amDateFormat:'DD MMMM YYYY,  HH:mm' }}</h3>
+	<p class="col-12 card-text title ">{{contact.text}}</p>
 	
 
 	<p *ngIf="confirm == false" class="col-12 col-md-2">
