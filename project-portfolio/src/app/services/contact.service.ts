@@ -20,33 +20,24 @@ export class ContactService {
 	}
 
 	testService (){
-		return 'Probando el servicio de Angular';
+		return 'Testing Angular Service';
 
 	}
-	//Importante, indicar que el metodo va a devolver un observable de cualquier tipo
+	//Important, indicate that the method will return an observable of any type
 	saveContact(contact: Contact):Observable <any>{
-		// parametros que vamos a enviar: params
-		// pero necesitamos que sea un JSON string
+		//Parameters that we are going to send: params
+		// but we need it to be a JSON string
 		let params = JSON.stringify(contact);
-		//cabeceras
+		//headers
 		let headers = new HttpHeaders().set('Content-Type','application/json');
 
-		//Peticion por post al backend: esta ruta esta en nuestro backend, donde realizamos la peticion:
+		//Request for post to the backend: this route is in our backend, where we make the request:
 		return this._http.post(this.url+'save-contact', params, {headers: headers});
 
 
 	}
 
-	//para obtener los proyectos
-	// getContacts():Observable<any>{
-	// 	let headers = new HttpHeaders().set('Content-Type', 'application/json');
-	// 	//Peticion ajax:
-	// 	return this._http.get(this.url+'contacts', {headers:headers});
-
-	// }
-
-
-getContacts(page = null):Observable<any>{
+	getContacts(page = null):Observable<any>{
 
 	let headers = new HttpHeaders().set('Content-Type','application/json') //forma en que se envian los datos
 								    	.set('Authorization',this.getToken()); 	//sacamos el token del localStorage
@@ -79,21 +70,21 @@ getContacts(page = null):Observable<any>{
 
 
 
-//Metodos para obtener los datos del localStorage, valores de usuario y token logeado
+//Methods to obtain localStorage data, user values and lozenged token
 	getIdentity(){
 
-		//El string del localstorage lo convertimos a un objeto JSON
+		//The string of the localstorage is converted to a JSON object
 		let identity = JSON.parse(localStorage.getItem('identity'));
 
 
 
 		 if(identity != "undefined"){
 		
-			//console.log('existe identity');
+			//console.log('exist identity');
 			this.identity = identity;
 		//	console.log(this.identity);
 		}else {
-		//	console.log('identity es nulo');
+		//	console.log('identity is null');
 			this.identity = null;
 		}
 		return this.identity;

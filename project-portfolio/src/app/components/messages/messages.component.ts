@@ -4,7 +4,7 @@ import { Contact } from '../../models/contact';
 import { ContactService } from '../../services/contact.service';
 import { Global } from '../../services/global';
 
-//para poder acceder a los parametros que recibamos de esta url y redirecciones:
+//to be able to access the parameters that we receive from this url and redirects:
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
@@ -21,7 +21,7 @@ export class MessagesComponent implements OnInit {
 	public url: string;
   public status: string;
 
-  //variables pagination
+  //pagination variables
   public page;
   public next_page;
   public prev_page;
@@ -114,7 +114,7 @@ getContacts(page){
   // 		response => {
   // 			//console.log(response);
   // 			if(response.contacts){
-  // 				//guardamos la respuesta en la variable creada
+  // 				//we save the response in the created variable
   // 				this.contacts = response.contacts
          
   // 			}

@@ -13,6 +13,9 @@ var UserSchema = Schema({
 		image: String
 });
 
+//ahora lo exportamos
 
-module.exports = mongoose.model('User', UserSchema); //Nombre de la entidad y su esquema
-//al crearse en la BD de datos se pluralizará y uppercase de forma automatica: User --> users
+//First parameter: name of the entity that will be saved in the bd: User
+//mongoose converts it to lowercase and pluralizes it -> "users"
+// in this way matches the collection we have in the bd
+module.exports = mongoose.model('User', UserSchema); 

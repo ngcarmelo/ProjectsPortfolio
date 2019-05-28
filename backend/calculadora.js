@@ -1,8 +1,8 @@
 'use strict'
-// para recoger los parametros pasados por consola
+// to collect the parameters passed by console
 var params = process.argv.slice(2);
 
-// pasamos a float los parametros (2 parametros)
+// we convert to float the parameters (2 parameters)
 var numero1 = parseFloat(params[0]);
 var numero2 = parseFloat(params[1]);
 
@@ -17,5 +17,5 @@ console.log(params);
 console.log('Hola mundo con NodeJS');
 console.log(plantilla);
 
-// desde la consola se ejecuta asi: node calculadora.js valor1 valor2
-//ejemplo: node calculadora.js 4 2
+// from the console runs like this: node calculator.js value1 value2
+//example: node calculadora.js 4 2

@@ -1,32 +1,32 @@
 'use strict'
 
 var express = require('express');
-//En esta variable cargo el controlador:
+//In this variable we load the controller:
 var ProjectController = require('../controllers/project'); 
-// En esta variable cargamos el router:
+// In this variable we load the router:
 var router = express.Router();
-//Cargamos el paquete instalado para trabajar con files, y creamos la carpeta uploads
-// donde se van a subir los archivos en este caso
+//We load the installed package to work with files, and create the uploads folder
+// where the files will be uploaded in this case
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart({ uploadDir: './uploads' });
 
-// Ahora nos creamos las rutas:
-//controlador: ProjectController(nombre de la variable recien creada que hace 
-//referencia al archivo que esta en: ../controllers/project.js') y el metodo home que tiene
+// Now we create the routes:
+//controller: ProjectController (name of the newly created variable that makes
+//reference to the file that is in: ../controllers/project.js') and the home method that has
 router.get('/home', ProjectController.home);
 router.post('/test', ProjectController.test);
 
 router.post('/save-project', ProjectController.saveProject);
 router.get('/project/:id?', ProjectController.getProject);
 router.get('/projects', ProjectController.getProjects);
-//es put, porque es para modificar/actualizar la bd
+//it's put, because it is to modify / update the bd
 router.put('/project/:id', ProjectController.updateProject);
 router.delete('/project/:id', ProjectController.deleteProject);
-//esta ruta lleva como variable un middleware que se ejecuta
-// justo antes que el metodo del controlador
+//this route has as a variable a middleware that runs
+// just before the controller method
 router.post('/upload-image/:id', multipartMiddleware, ProjectController.uploadImage);
 
-//ruta para obtener url de imagenes
+//route to get url of images
 router.get('/get-image/:image', ProjectController.getImageFile);
 
 

@@ -18,15 +18,15 @@ export class ProjectService {
 		return 'Probando el servicio de Angular';
 
 	}
-	//Importante, indicar que el metodo va a devolver un observable de cualquier tipo
+	//Important, indicate that the method will return an observable of any type
 	saveProject(project: Project):Observable <any>{
-		// parametros que vamos a enviar: params
-		// pero necesitamos que sea un JSON string
+		// Parameters that we are going to send: params
+		// but we need it to be a JSON string
 		let params = JSON.stringify(project);
-		//cabeceras
+		//headers
 		let headers = new HttpHeaders().set('Content-Type','application/json');
 
-		//Peticion por post al backend: esta ruta esta en nuestro backend, donde realizamos la peticion:
+		//Request for post to the backend: this route is in our backend, where we make the request:
 		return this._http.post(this.url+'save-project', params, {headers: headers});
 
 

@@ -1,14 +1,14 @@
 'use strict'
 
-import { Injectable } from '@angular/core'; //definir servicios e inyectarlos
-import { HttpClient, HttpHeaders } from '@angular/common/http'; // para hacer las peticiones ajax y cabeceras
-import { Observable } from 'rxjs/Observable'; // para recoger las respuestas del api **posible problema segun version
+import { Injectable } from '@angular/core'; //define services and inject them
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // to make ajax requests and headers
+import { Observable } from 'rxjs/Observable'; // to collect the responses of the api ** possible problem according to version
 import { Global } from '../services/global';
 import { User } from '../models/user';
 
-@Injectable() //Decorador
+@Injectable() //Decorator
 export class UserService{
-	public url:string; //url del backend
+	public url:string; //backend url
 	
 	public identity;
 	public token;
@@ -18,20 +18,20 @@ export class UserService{
 		this.url = Global.url;
 		//console.log(this.url);
 	}
-	//Metodo de registro
+	//Registration method
 	register(user: User): Observable<any>{
-		let params = JSON.stringify(user); //json(objeto) convertido a string
-		let headers = new HttpHeaders().set('Content-type', 'application/json'); //en php el application/json seria diferente
+		let params = JSON.stringify(user); //json(object) converted to string
+		let headers = new HttpHeaders().set('Content-type', 'application/json'); //with  php --> application/json would be different
 		
-		//Peticion al API:
-		//Parametros: 1º url 2º params(el objeto que enviamos) 3º headers
+		//Request to the API:
+		//Parameters: 1º url 2º params(The object we send() 3º headers
 		return this._http.post(this.url+'/register', params, {headers: headers});
 	}
 
-	//Metodo para logearse
+	//Method to login
 	signup(user: any, gettoken = null): Observable<any>{
 
-		//tal como esta el backend, si hay gettoken nos devolverá el token
+		//just like the backend, if there is gettoken, it will return the token
 		if(gettoken != null){
 			user.gettoken = gettoken;
 		}
@@ -45,20 +45,21 @@ export class UserService{
 	}
 
 	//Metodos para obtener los datos del localStorage, valores de usuario y token logeado
+	//Methods to obtain localStorage data, user values and login token
 	getIdentity(){
 
-		//El string del localstorage lo convertimos a un objeto JSON
+		//The string of the localstorage is converted to a JSON object
 		let identity = JSON.parse(localStorage.getItem('identity'));
 
 
 
 		 if(identity != "undefined"){
 		
-			//console.log('existe identity');
+			//console.log('exist identity');
 			this.identity = identity;
 		//	console.log(this.identity);
 		}else {
-		//	console.log('identity es nulo');
+		//	console.log('identity is null');
 			this.identity = null;
 		}
 		return this.identity;

@@ -1,5 +1,5 @@
 <div class="container">
-	<h2 class="title">Proyectos</h2>
+	<h2 class="title">Projects</h2>
 	<div class="row">
 	<ul class="col-12 pt-5">
 		<div class="card-deck">
@@ -8,8 +8,8 @@
 			
 			<div class="card h-100 bg-light mb-3  border-light">
 			<a [routerLink]="['/proyecto', project._id]">
-			<!-- metodo del backend para obtener imagen -->
-	  <!-- clase image eliminada -->
+			<!-- backend method to get image -->
+	  <!-- class image deleted -->
 	    <div class="img-responsive card-img-top"><img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt=""></div>
 	    <div class="card-body">
 		<h3 class="card-title title">{{project.name}} </h3>

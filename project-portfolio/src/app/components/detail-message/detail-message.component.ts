@@ -4,7 +4,7 @@ import { Contact } from '../../models/contact';
 import { ContactService } from '../../services/contact.service';
 import { Global } from '../../services/global';
 
-//para poder acceder a los parametros que recibamos de esta url:
+//to be able to access the parameters that we receive from this url:
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -22,8 +22,8 @@ export class DetailMessageComponent implements OnInit {
 
   constructor(
   	private _contactService: ContactService,
-  	private _router: Router, // para las rutas
-  	private _route: ActivatedRoute //para las rutas
+  	private _router: Router, // to be able to get routes
+  	private _route: ActivatedRoute //to be able to get routes
   		) {
   		
   		this.url = Global.url;
@@ -41,7 +41,7 @@ export class DetailMessageComponent implements OnInit {
   }
 
   getContact(id){
-    // con el subscribe podemos recoger la respuesta del metodo
+    //with subscribe we can collect the answer of the method
   	this._contactService.getContact(id).subscribe(
   		response => {
   			this.contact = response.contact;
@@ -61,7 +61,7 @@ export class DetailMessageComponent implements OnInit {
 
   		response => {
   			if(response.contact){
-  				//redirección
+  				//redirection
   					this._router.navigate(['/messages']);
   			}
   		},

@@ -8,18 +8,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SliderComponent implements OnInit {
 
-//**Para el 'output' en el import tambien añadimos 'EventEmitter' 
-//Para crear nuevos eventos
+//**For the 'output' in the import we also add 'EventEmitter'
+//To create new events
 
-
-//** Agregar en el import de arriba 'Input'
-//recibimos desde el componente padre la variable anchura y ya podemos usarla
-//simplemente con este decorador
+//** Add at the top import 'Input'
+//we receive from the parent component the variable width and we can use it
+//simply with this decorator
   @Input() anchura:number;
   @Input('etiquetas') captions:boolean;
 
-//vamos a generar un evento: conseguir autor
-// y para lanzar el evento cuando nos interese, creamos la funcion lanzar()
+//let's generate an event: get author
+// and to launch the event when we are interested, we create the cast () function
   @Output() conseguirAutor = new EventEmitter;
 
   public autor:any;

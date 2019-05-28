@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-//para poder acceder a los parametros que recibamos de esta url y redirecciones:
+//to be able to access the parameters that we receive from this url and redirects:
 import { Router, ActivatedRoute, Params } from '@angular/router';
-//Importacion del modelo de usuario: (Importacion de la clase user)
+//Import of the user model: (Import of the user class)
 import { User } from '../../models/user';
 
-//Importamos el servicio, donde están los metodos
+//import the service, where are the methods
 import { UserService } from '../../services/user.service';
 
 
@@ -14,24 +14,23 @@ import { UserService } from '../../services/user.service';
   selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService]  //Declaramos el servicio
+  providers: [UserService]  //We declare the service
 })
 export class LoginComponent implements OnInit {
 	public title:string;
-  public user:User;  //hemos cambiado a any para evitar error del user
+  public user:User;  //we have changed to 'any' to avoid user error
   public status: string;
 
-  public identity; // va a tener objeto del usuario identificado
-  public token;  // va a tener el token de identificacion
+  public identity; // will have the user's object identified
+  public token;  // will have the identification token
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService //Variable del servicio UserService
-
+    private _userService: UserService //Variable of the UserService service
     ) {
-  this.title ='Identificate';
-  this.user = new User("", "","","","","","ROLE_USER",""); // no es necesario indicar el rol, se encargará el backend
+  this.title ='Sign in';
+  this.user = new User("", "","","","","","ROLE_USER",""); // it is not necessary to indicate the role, the backend will be in charge
    }
 
 
@@ -41,29 +40,29 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
 
-    //****Realizamos 2 peticiones http, una para obtener el usuario y otra para obtener el token
+    //****We make 2 requests http, one to obtain the user and another to obtain the token
 
     // console.log(this.user);
     // alert(this.user.password);
     //  alert(this.user.email);
 
 
-//Logear al usuario y conseguir sus datos
+//Login the user and get their data
     this._userService.signup(this.user).subscribe(
       response =>{
-        this.identity = response.user; //contendra el usuario logeado
-          // console.log(this.identity); //usuario en la consola
+        this.identity = response.user; //will contain the logged-in user
+          // console.log(this.identity); //user in the consola
       
            
       if(!this.identity  || !this.identity._id){
         this.status = 'error';
       }else {
            //this.status ='success';
-           //Persistir datos del usuario, localstorage
-           //hace falta guardarlo en forma de string el objeto:
+           //Persist user data, localstorage
+           //it is necessary to save it in the form of a string:
            localStorage.setItem('identity', JSON.stringify(this.identity));
 
-           //Conseguir el token
+           //get token
            this.getToken();
 
       }          
@@ -87,35 +86,28 @@ export class LoginComponent implements OnInit {
 
 
 
-
-
 getToken(){
 
 
- //Logear al usuario y conseguir sus datos
+ //Login the user and get their data
     this._userService.signup(this.user, 'true').subscribe(
       response =>{
-        this.token = response.token; //contendra el usuario logeado
+        this.token = response.token; //will contain the logged-in user
         
-        console.log(this.token); //token en la consola
+        console.log(this.token); //token
            
       if(this.token.length <= 0){
         this.status = 'error';
 
       }else {
           
-           //Persistir Token, localstorage
+           //Persist Token, localstorage
            localStorage.setItem('token', this.token);
-
-
-           //Conseguir contadores o estadisticas del usuario
-          
 
             this.status = 'success';
             this._router.navigate(['/']);
           
       }          
-
 
       },
       error =>{
@@ -125,18 +117,9 @@ getToken(){
             this.status = 'error';
           }
 
-
       });
 
-
- 
-
-
 }
-
-
- 
-
 
 }
 

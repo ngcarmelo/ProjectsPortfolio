@@ -8,12 +8,12 @@ export class UploadService {
 	constructor(){
 		this.url = Global.url;
 	}
-	//peticion ajax clasica, adjuntando un archivo a subir
+	//classic ajax request, attaching a file to upload
 	
 	makeFileRequest(url: string, params: Array<string>, files: Array<File>, name: string){
 		return new Promise(function(resolve, reject){
 			var formData:any = new FormData();
-			var xhr = new XMLHttpRequest(); //peticion ajax en js clasico
+			var xhr = new XMLHttpRequest(); //ajax request in classic js
 
 			for(var i = 0; i < files.length; i++) {
 				formData.append(name, files[i], files[i].name);
@@ -22,14 +22,14 @@ export class UploadService {
 			xhr.onreadystatechange = function(){
 				if(xhr.readyState == 4 ){
 					if(xhr.status == 200){
-						resolve(JSON.parse(xhr.response)); //ejecutamos el resolve
+						resolve(JSON.parse(xhr.response)); //we execute the solve
 					}else {
 						reject(xhr.response);
 
 					}
 				}
 			}
-			//peticion ajax:
+			//Ajax request:
 			xhr.open('POST', url, true);
 			xhr.send(formData);
 		});

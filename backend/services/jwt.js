@@ -13,8 +13,8 @@ exports.createToken = function(user){
 		email: user.email,
 		role: user.role,
 		image: user.image,
-		iat: moment().unix(),  //fecha creacion token
-		exp: moment().add(30, 'days').unix() //fecha expiracion token
+		iat: moment().unix(),  //token creation date
+		exp: moment().add(30, 'days').unix() //token expiration date
 	};
 
 	return jwt.encode(payload,secret);

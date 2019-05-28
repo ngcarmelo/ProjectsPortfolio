@@ -1,20 +1,19 @@
 'use strict'
 
-//en la consola: "npm start" para establecer conexion
-//así ejecutamos el script que tenemos en el package.json
+//in the console: "npm start" to establish connection
+//so we execute the script that we have in the package.json
 
-var mongoose = require('mongoose');  //importamos el modulo de moongose
-var app = require('./app'); //ruta del app.js , no hace falta la extension y así lo cargamos aqui
-var port = 3700;  // puerto de mi servidor
-
+var mongoose = require('mongoose');  //we import the moongose module
+var app = require('./app'); //app.js route, no extension is needed and so we load it here
+var port = 3700;  // port  server
 mongoose.Promise = global.Promise;   //conexion a bd, nuestra bd se llama portafolio
 mongoose.connect('mongodb://localhost:27017/portafolio')
 	.then(()=> {
-		console.log('Conexion a bd establecida con exito');
+		console.log('Connection to bd successfully established');
 
-		//Creacion del servidor
+		//Server creation
 		app.listen(port,() =>{
-			console.log('Servidor corriendo correctamente en la url: localhost: 3700');
+			console.log('Server running correctly in the url: localhost: 3700');
 			//http://localhost:3700/
 
 		});

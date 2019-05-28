@@ -8,7 +8,7 @@
 
 </ul> -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light ">
 	<!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,30 +18,31 @@
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">Sobre Mi <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">About me <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Proyectos</a>
+        <a class="nav-link"  [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Projects</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']" id="logo">CN</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Crear Proyectos</a>
+        <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Create a Project</a>
       </li>
+      
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a>
+        <a class="nav-link" [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contact</a>
         
       </li>
 
         <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/messages']" [routerLinkActive]="['actived']" *ngIf="identity">Leer Mensajes</a>
+        <a class="nav-link" [routerLink]="['/messages']" [routerLinkActive]="['actived']" *ngIf="identity">Read Messages</a>
       </li>
         <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['actived']" *ngIf="!identity">Login</a>
+        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['actived']" *ngIf="!identity">Login in</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="identity">Register</a>
+        <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="identity">Sign up</a>
       </li>
      </ul>
    </div>

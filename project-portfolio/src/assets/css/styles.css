@@ -1,4 +1,4 @@
-Importar fuentes custom*/
+/*Import custom fonts*/
 @font-face {
 	font-family: "yanone";
 	src: url("fonts/yanone.ttf");
@@ -9,7 +9,7 @@ Importar fuentes custom*/
 	src: url("fonts/finger.ttf");
 }
 
-/* Generales */
+/* Main */
 
 *{
 	margin: 0px;
@@ -29,7 +29,7 @@ body {
 
 /* Jumbotron */
 .jumbotron { 
-	background: #f8f9fa!important;
+	background: white!important;
  }
 
 @media (min-width: 576px)
@@ -46,7 +46,7 @@ header a:hover,
 	font-family: "finger";
 }
 
-/* Logotipo */
+/* Logo */
  #logo {
  	font-family: "finger";
  	font-size: 30px;
@@ -75,7 +75,7 @@ header a:hover,
 	margin-bottom: 5px;
 }
 
-/* title general*/
+/* Main Title */
 h1 {
 	font-family: "finger"!important;
 }
@@ -132,7 +132,7 @@ h3.title-message-detail  {
 	margin-bottom: 15px;
 }
 
-/*Seccion del formulario*/
+/*Form Section*/
 .container {
 	padding: 50px;
 	padding-top: 10px;
@@ -226,7 +226,7 @@ form input[disabled]{
 	color: white;
 }
 
-/* Pagina de proyectos */
+/* Project Page */
 .project {
 	list-style: none;
 	display: block;
@@ -255,7 +255,8 @@ form input[disabled]{
 	margin-top: 20px;
 }
 
-/* Listado  de mensajes de los (contactos)  */
+/*Message list of (contacts) */
+
 .list-messages {
 	list-style: none;
 	display: block;
@@ -274,3 +275,4 @@ form input[disabled]{
 	text-decoration: none;
 	color: black;
 }
+

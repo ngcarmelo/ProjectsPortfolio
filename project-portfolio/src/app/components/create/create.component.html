@@ -1,53 +1,53 @@
-<!-- incluimos el *ngIf="project" para que solo lo carge cuando tenga project  -->
-<!-- Ya que ahora el componente edit redirige a esta vista tambien -->
+<!--we include the *ngIf = "project" so that it only loads when  have project loaded -->
+<!--Since now the edit component redirects to this view too-->
 <div class="container" *ngIf="project">
 	<h2 class="title">{{title}}</h2>
 	<div class="alert-success" *ngIf="status == 'success' ">
-		El projecto ha sido creado correctamente, puedes verlo  <a [routerLink]="['/proyecto', save_project._id]">Aquí</a>  
+		The project has been created correctly, you can see it  <a [routerLink]="['/proyecto', save_project._id]">Here</a>  
 	</div>
 	<div class="message failed" *ngIf="status  == 'failed' ">
-		No se ha podido crear el projecto
+		The project could not be created
 	</div>
 
 
-	<!-- incluimos 'projectForm dentro del onSubmit para poder resetearlo' -->
+	<!-- we include 'projectForm inside the onSubmit to be able to reset it' -->
 	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" class="col-md-6" >
 	
 		
 	 <div class="form-group">
-   		 <label for="name">Nombre</label>
-   		 <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name" required placeholder="Introduce un Nombre">
-   		 <small id="" class="form-text text-muted" *ngIf="name.touched && !name.valid">El nombre es obligatorio</small>
+   		 <label for="name">Name</label>
+   		 <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name" required placeholder="Introduce a Name">
+   		 <small id="" class="form-text text-muted" *ngIf="name.touched && !name.valid"> Name is required</small>
 		</div>
 
      <div class="form-group">
-	    <label for="description">Descripción</label>
-	    <textarea  class="form-control" name="description" #description="ngModel" [(ngModel)]="project.description" required  placeholder="Introduce una descripción"></textarea>
-	    <small  class="form-text text-muted"  *ngIf="description.touched && !description.valid"> La descripción es obligatoria</small>
+	    <label for="description">Description</label>
+	    <textarea  class="form-control" name="description" #description="ngModel" [(ngModel)]="project.description" required  placeholder="Introduce a Description"></textarea>
+	    <small  class="form-text text-muted"  *ngIf="description.touched && !description.valid"> Description is required</small>
   		</div>
 
 
 	 <div class="form-group">
-    	<label for="category">Categoría</label>
-    	<input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required class="form-control" placeholder="Introduce una categoría">
-    	<small  class="form-text text-muted" *ngIf="category.touched && !category.valid">La categoría es obligatoria</small>
+    	<label for="category">Category</label>
+    	<input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required class="form-control" placeholder="Introduce a Category">
+    	<small  class="form-text text-muted" *ngIf="category.touched && !category.valid">Category is required</small>
  		 </div>
 
 	 <div class="form-group">
-	    <label for="year">Año</label>
-	    <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" class="form-control"  placeholder="Introduce un Año">
-	    <small  class="form-text text-muted">Introduce un año</small>
+	    <label for="year">Year</label>
+	    <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" class="form-control"  placeholder="Introduce a year">
+	    <small  class="form-text text-muted">Introduce a Year</small>
 	  	</div>
 
 	 <div class="form-group">
-	    <label for="langs">Lenguajes usados</label>
-    	  <input  type="text" name="langs" #name="ngModel" [(ngModel)]="project.langs" required class="form-control"  placeholder="Introduce un Lenguaje">
+	    <label for="langs">Languages</label>
+    	  <input  type="text" name="langs" #name="ngModel" [(ngModel)]="project.langs" required class="form-control"  placeholder="Introduce a Language">
 	  <!--   <small  class="form-text text-muted" *ngIf="langs.touched && !langs.valid">Los lenguajes son obligatorios</small> -->
 	  	</div>
 
 
 	 <div class="form-group">
-    	<label for="image">Imagen del Proyecto</label>
+    	<label for="image">Image of the Project</label>
     	<span class="image" *ngIf="project.image" style="float:none;">
 			<img  src="{{url+'get-image/'+project.image}}" style="width: 100px; margin-bottom: 10px; " alt="">
 		</span>
@@ -60,7 +60,7 @@
 	<div class="input-group mb-3">
     <div class="custom-file">
     <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="fileChangeEvent($event)">
-    <label class="custom-file-label" for="inputGroupFile01">Elige Imagen</label>
+    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
   </div>
 </div>
 
@@ -70,8 +70,8 @@
   	</div>
 
 
-		<!-- con el disabled dando el nombre del form, lo desactivamoos mientras no sea valido  -->
-		<input type="submit" value="Enviar"  class="btn btn-primary" [disabled]="!projectForm.valid">
+		<!-- with disabled giving the name of the form, deactivate it while it is not valid  -->
+		<input type="submit" value="Send"  class="btn btn-primary" [disabled]="!projectForm.valid">
 
 	</form>
 

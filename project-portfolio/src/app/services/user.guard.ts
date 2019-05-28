@@ -1,24 +1,24 @@
 'use strict'
 
-//Puedo usar este guard en cada una de las rutas (rutas privadas)
-//Nota: hay que impportarlos en el app.module
+//we can use this guard in each of the routes (private routes)
+//Note: we have to import them into the app.module
 // import { UserService } from './services/user.service';
 // import { UserGuard } from  './services/user.guard';
-// y luego en providers
+// and then in providers
  // providers: [  
  //  appRoutingProviders,
  //  UserService,
  //  UserGuard
  //    ],
 
- // y luego en el routing importarlo tambien:
+ // and then in the routing to import it also:
 // import { UserGuard } from  './services/user.guard';
 
-// y añadiendo la propiedad siguiente en cada ruta que queremos usarlo:
+// and adding the following property in each route that we want to use it:
  // canActivate:[UserGuard]
 
 
-import { Injectable } from '@angular/core'; //definir servicios e inyectarlos
+import { Injectable } from '@angular/core'; //define services and inject them
 import { Router, CanActivate } from '@angular/router';
 import { UserService } from './user.service';
 

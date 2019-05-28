@@ -24,14 +24,14 @@
  		
   
 	<p *ngIf="confirm == false" class="col-12 col-lg-3">
-		<a [routerLink]="['/editar-proyecto', project._id]" class="button-edit btn btn-warning">Editar</a>
-		<a (click)="setConfirm(true)" class="button-delete btn btn-danger">Borrar</a>
+		<a [routerLink]="['/editar-proyecto', project._id]" class="button-edit btn btn-warning">Edit</a>
+		<a (click)="setConfirm(true)" class="button-delete btn btn-danger">Delete</a>
 	</p>
 
 	<p *ngIf="confirm == true"  class="col-12 col-lg-3">
-		<span class="confirm">¿Estas seguro de eliminar este proyecto? </span>
-		<a (click)="setConfirm(false)" class="button-edit btn btn-warning">Cancelar</a>
-		<a (click)="deleteProject(project._id)" class="button-delete btn btn-danger">Eliminar Definitivamente</a>
+		<span class="confirm">¿Are you sure to eliminate this project?? </span>
+		<a (click)="setConfirm(false)" class="button-edit btn btn-warning">Cancel</a>
+		<a (click)="deleteProject(project._id)" class="button-delete btn btn-danger">Delete Definitively</a>
 	</p>
 
 

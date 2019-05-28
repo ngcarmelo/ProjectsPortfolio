@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project.service';
 import { Global } from '../../services/global';
-//para poder acceder a los parametros que recibamos de esta url:
+//import next line to be able to access the parameters that we receive from this url:
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -19,15 +19,15 @@ export class DetailComponent implements OnInit {
 
   constructor(
   	private _projectService: ProjectService,
-  	private _router: Router, // para las rutas
-  	private _route: ActivatedRoute //para las rutas
+  	private _router: Router, // to be able to receive routes and parameters
+  	private _route: ActivatedRoute //to be able to receive routes and parameters
   	) {
   			this.url = Global.url;
   			this.confirm = false;
   	 }
 
   ngOnInit() {
-  	//para recoger el parametro que nos llega por la url 
+  	//to collect the parameter that we get through the url
   	this._route.params.subscribe(params =>{
   		let id = params.id;
   		this.getProject(id);
@@ -36,7 +36,7 @@ export class DetailComponent implements OnInit {
   }
 
   getProject(id){
-    // con el subscribe podemos recoger la respuesta del metodo
+    //with the subscribe we can pick up the answer of the method
   	this._projectService.getProject(id).subscribe(
   		response => {
   			this.project = response.project;
@@ -56,7 +56,7 @@ export class DetailComponent implements OnInit {
 
   		response => {
   			if(response.project){
-  				//redirección
+  				//redirection
   					this._router.navigate(['/proyectos']);
   			}
   		},

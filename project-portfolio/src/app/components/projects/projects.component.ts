@@ -31,7 +31,7 @@ export class ProjectsComponent implements OnInit {
   		response => {
   			//console.log(response);
   			if(response.projects){
-  				//guardamos la respuesta en la variable creada
+  				//save the response in the created variable
   				this.projects = response.projects
          
   			}

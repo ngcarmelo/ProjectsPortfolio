@@ -1,32 +1,32 @@
 'use strict'
 
-//Controlador
+//Controller
 
-//importamos nuestro modelo 
+//import our model
 var Project = require('../models/project');
 
-//cargar libreria para poder eliminar imagenes
+//load library to delete images
 var fs = require('fs');
-//para poder cargar rutas fisicas:
+//load library to load physical routes:
 var path = require('path');
 
 var controller = {
 	home: function(req,res){
 		return res.status(200).send({
-			message: 'Soy la home'
+			message: 'I am home'
 		});
 
 	},
 	test: function(req, res){
 		return res.status(200).send({
-			message: 'Soy el metodo o accion test del controlador de proyect'
+			message: 'I am the method or action test of the project controller'
 		});
 
 	},
 
 	saveProject: function(req, res){
 		var project = new Project();
-	// Como va a ser un post los parametros van en el cuerpo
+	// it's going to be a post so the parameters go in the body
 		var params = req.body;
 
 		project.name = params.name
@@ -36,13 +36,13 @@ var controller = {
 		project.langs = params.langs;
 		project.image = null;
 
-		//para guardarlo en la bd:
+		//save in db:
 
 
 
 		project.save((err, projectStored) => {
-			if(err) return res.status(500).send({message: 'Error al guardar'});
-			if (!projectStored) return res.status(404).send({message: 'No se ha podido guardar el proyecto.'});
+			if(err) return res.status(500).send({message: 'Error saving'});
+			if (!projectStored) return res.status(404).send({message: 'The project could not be saved.'});
 
 			return res.status(200).send({project: projectStored});
 		});
@@ -58,18 +58,18 @@ var controller = {
 	},
 
 	getProject: function(req, res){
-		// Recoger valor que nos viene por la url:
+		// Catch value from url:
 		var projectId = req.params.id;
 		
 
 		if(projectId == null){
-			return res.status(404).send({message: 'El projecto no existe.'});
+			return res.status(404).send({message: 'The project does not exist'});
 		}
 
-		//Nos busca de la bd por id un objeto que este en ella. (mongoose)
+		//We are looking from the bd by id an object that is in it. (mongoose)
 		Project.findById(projectId, (err, project) =>{
-			if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
-			if(!project) return res.status(404).send({message: 'El projecto no existe'});
+			if(err) return res.status(500).send({message: 'Error returning data'});
+			if(!project) return res.status(404).send({message: 'The project does not exist'});
 
 			return res.status(200).send({
 				project
@@ -79,26 +79,26 @@ var controller = {
 	},
 
 	getProjects: function(req, res){
-		//opcional .sort('year')
-		//con find buscamos todos los projectos porque no hemos filtrado nada
+		//optional .sort('year')
+		//with 'find' we look for all the projects because we have not filtered anything
 		Project.find({}).sort('year').exec((err, projects) =>{
-			if(err) return res.status(500).send({message: 'Error al devolver'});
-			if(!projects) return res.status(404).send({message: 'No hay proyectos que mostrar'});
+			if(err) return res.status(500).send({message: 'Error returning data'});
+			if(!projects) return res.status(404).send({message: 'There are no projects to show'});
 
 			return res.status(200).send({projects});
 		});
 	},
 
 	updateProject: function(req, res){
-		//esta variable la creamos para capturar lo que nos pasa la url
+		//we create this variable to capture the variables in the url
 		var projectId= req.params.id; //***la variable es id, porque así lo indica la ruta
-		var update = req.body;  //**coge los elementos enviados el post
+		var update = req.body;  //**take the items sent the post
 
-		//le pasamos el id del objeto a modificar, el propio objeto con las nuevas propiedades
+		//we pass the id of the object to modify, the object itself with the new properties
 		//
 		Project.findByIdAndUpdate(projectId, update, {new: true}, (err, projectUpdated) =>{
-			if(err) return res.status(500).send({message: 'Error al actualizar'});
-			if(!projectUpdated) return res.status(404).send({message: 'No existe el proyecto a actualizar'});
+			if(err) return res.status(500).send({message: 'Error updating'});
+			if(!projectUpdated) return res.status(404).send({message: 'There is no project to update'});
 
 			return res.status(200).send({
 				project: projectUpdated
@@ -110,8 +110,8 @@ var controller = {
 	deleteProject: function(req, res){
 		var projectId = req.params.id;
 	Project.findByIdAndRemove(projectId,(err, projectRemoved) => {
-		if(err) return res.status(500).send({message: 'No se ha podido borrar el proyecto'});
-		if(!projectRemoved) return res.status(404).send({message: 'No se puede eliminar ese proyecto'});
+		if(err) return res.status(500).send({message: 'The project could not be deleted'});
+		if(!projectRemoved) return res.status(404).send({message: 'Can not delete that project'});
 		return res.status(200).send({
 			 project: projectRemoved
 		});
@@ -123,15 +123,15 @@ var controller = {
 		var projectId = req.params.id;
 		var fileName = 'Imagen no subida...';
 
-		// req.files no viene por defecto en node.js, necesitamos un modulo o plugin
+		//req.files does not come by default in node.js, we need a module or plugin
 		if(req.files){
 			var filePath = req.files.image.path;
 			
-			//Obtenemos el nombre de la imagen(archivo), en filename:
+			//We get the name of the image (file), in filename:
 			var fileSplit = filePath.split('\\');
 			var fileName = fileSplit[1];
 			
-			//para obtener la extension:
+			//to get the extension:
 			var extSplit = fileName.split('\.');
 			var fileExt = extSplit[1];
 
@@ -139,9 +139,9 @@ var controller = {
 
 			Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, (err, projectUpdated) =>{
 					
-					if(err) return res.status(500).send({message: 'La imagen no se ha subido'});
+					if(err) return res.status(500).send({message: 'The image has not been uploaded'});
 
-					if(!projectUpdated) return res.status(404).send({ message: 'El proyecto no exiate y no se ha asignado la imagen'}); 
+					if(!projectUpdated) return res.status(404).send({ message: 'The project does not exist and the image has not been assigned'}); 
 
 					return res.status(200).send({
 									//files: req.files
@@ -150,9 +150,9 @@ var controller = {
 					});
 
 
-			// sino tiene la extension requerida...borramos
+			// if it does not have the required extension ... we delete
 			}else {
-				//gracias a la extension fs poddemos borrar archivos
+				//thanks to the extension fs we can delete files
 					fs.unlink(filePath, (err)=>{
 						return res.status(200).send({ message: 'La extension no es valida'});
 
@@ -180,7 +180,7 @@ var controller = {
 				return res.sendFile(path.resolve(path_file));
 			}else{
 				return res.status(200).send({
-					messsage: "No existe la imagen..."
+					messsage: "There is no image..."
 				});
 			}
 		});

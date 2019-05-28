@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//Importamos archivos rutas:
+//We import routes files:
 import { routing, appRoutingProviders } from './app.routing';
 
-//Importamos para que funcionen las peticiones y  el databinding, formularios.
+//We import so that the requests and the databinding, forms could work.
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -25,7 +25,7 @@ import { DetailMessageComponent } from './components/detail-message/detail-messa
 import {  TruncatePipe }   from './pipes/limitTo.pipe';
 import { MomentModule} from 'angular2-moment';   
 
-//Servicios  **necesarios para utilizar guards
+//Services ** necessary to use guards
 import { UserService } from './services/user.service';
 import { UserGuard } from  './services/user.guard';
 
@@ -57,13 +57,13 @@ import { UserGuard } from  './services/user.guard';
   ],
   imports: [
     BrowserModule,
-    routing,  //importamos aqui porque es un modulo
+    routing,  //we import here because it is a module
     HttpClientModule,
     FormsModule,
     MomentModule
   ],
   providers: [
-  appRoutingProviders,  //importamos aqui porque es un servicio
+  appRoutingProviders,  //we import here because it's a service
   UserService,
   UserGuard
   ],

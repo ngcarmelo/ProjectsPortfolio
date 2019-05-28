@@ -1,11 +1,11 @@
 import { Directive, ElementRef } from '@angular/core';
-//Añadimos elementRef para seleccionar elemento del dom
+//We add elementRef to select element of the dom
 @Directive({
   selector: '[appResaltado]'
 })
 export class ResaltadoDirective {
 
-//añadimos el Element ref en el constructor:
+//we add the Element ref in the constructor:
   constructor(public el:ElementRef) {
   //	console.log(el.nativeElement);
   //	el.nativeElement.style.background ="blue";

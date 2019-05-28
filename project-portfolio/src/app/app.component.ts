@@ -2,10 +2,10 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 
 import { User } from './models/user';
 
-//Importamos el servicio, donde están los metodos
+//We import the service, where are the methods
 import { UserService } from './services/user.service';
 
-// Declaramos las variables para jQuery
+// Declare the variables for jQuery
 declare var jQuery:any;
 declare var $:any;
 
@@ -24,7 +24,7 @@ export class AppComponent {
 
 constructor(
   
-    private _userService: UserService //Variable del servicio UserService
+    private _userService: UserService //Variable of the UserService service
     ) {
 
  	   

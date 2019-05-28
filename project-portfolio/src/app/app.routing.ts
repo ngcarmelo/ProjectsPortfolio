@@ -1,8 +1,8 @@
-//Crear archivo 'app.routing.ts' para las rutas
+//Create file 'app.routing.ts' for routes
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-//Las rutas de mis componentes
+//The routes of my components
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -20,7 +20,7 @@ import { DetailMessageComponent } from './components/detail-message/detail-messa
 import { UserGuard } from  './services/user.guard';
 
 
-//cada ruta con su componente
+//each route with its component
 const appRoutes: Routes = [
 {path: '', component: AboutComponent},
 {path: 'sobre-mi', component: AboutComponent},

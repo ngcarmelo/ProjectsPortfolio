@@ -1,13 +1,13 @@
 'use strict'
 
-//necesario para las contraseñas cifradas:
+//necessary for encrypted passwords:
 var bcrypt = require('bcrypt-nodejs');
 
-//necesario para la paginacion:
+//necessary for the pagination
 var mongoosePaginate = require('mongoose-pagination');
-//Nos permite trabajar con archivos
+//It allows us to work with files
 var fs = require('fs');
-var path = require('path'); //nos permite trabajar con rutas
+var path = require('path'); //it allows us to work with routes
 
 var User = require('../models/user');
 var jwt = require('../services/jwt.js');
@@ -15,16 +15,16 @@ var jwt = require('../services/jwt.js');
 // app.get('/', (req, res) =>{
 
 //  	res.status(200).send({
-//  		message: 'Hola Mundo desde  en el servidor de NodeJS'
+//  		message: 'Hello World from on the NodeJS server'
 
 //  	});
 //  });
 
-//Metodos de prueba
+//Test methods
 function home (req, res) {
 
  	res.status(200).send({
- 		message: 'Hola Mundo desde  en el servidor de NodeJS'
+ 		message: 'Hello World from on the NodeJS server'
 
  	});
  }
@@ -34,14 +34,14 @@ function home (req, res) {
 function pruebas (req, res) {
 
  	res.status(200).send({
- 		message: 'Hola mundo desde  el servidor de NodeJS'
+ 		message: 'Hello World from on the NodeJS server'
 
  	});
  }
 
-//Registro
+//Register
 function saveUser (req, res){
-	//campos que nos lleguen por post en --> params, con req.body
+	//fields that we receive by post--> params, with req.body
 	var params = req.body;
 	var user = new User();
 
@@ -55,31 +55,31 @@ function saveUser (req, res){
 		user.role = 'ROLE_USER';
 		user.image = null;
 
-		//condicion or para buscar en la BD, si existe ese email o ese nick
-		//nos encontrara todos los que se repitan
-		//Controlar usuarios duplicados
+		//condition 'or' to search the BD, if there is that email or that nick
+		//we find all those that are repeated
+		//Control duplicate users
 		User.find({ $or: [
 						{email: user.email.toLowerCase()},
 						{nick: user.nick.toLowerCase()}
 
 						]}).exec((err, users) => {
 
-							if(err) return res.status(500).send({ message: 'Error en la peticion de usuarios'});
+							if(err) return res.status(500).send({ message: 'Error in the user request'});
 
 							if(users && users.length >= 1){
-								return res.status(200).send({ message: 'El usuario que intenta registrar ya existe!!'});
+								return res.status(200).send({ message: 'The user trying to register already exists!!'});
 							}else {
 
-								//Cifra el password y me guarda los datos:
+								//Encrypt the password and save the data:
 		bcrypt.hash(params.password, null, null, (err, hash) =>{
 			user.password = hash;
-			//funcion de mongoose:
+			//mongoose function:
 			user.save((err, userStored) => {
-				if(err) return res.status(500).send({ message: 'Error al guardar el usuario'});
+				if(err) return res.status(500).send({ message: 'Error when saving the user'});
 				if(userStored){
 					res.status(200).send({user: userStored});
 				}else{
-					res.status(404).send({message: 'No se ha registrado el usuario'})
+					res.status(404).send({message: 'The user has not registered'})
 				}
 			});
 
@@ -88,7 +88,7 @@ function saveUser (req, res){
 						});
 		}else{
 			res.status(200).send({
-				message: 'Envia todos los campos necesarios'
+				message: 'Send all the necessary fields'
 			});
 		} 
 }
@@ -96,7 +96,8 @@ function saveUser (req, res){
 //Login
 function loginUser(req, res){
 
-	//al logearnos obtenemos el token, si agregamos gettoken :true en el body (postman)
+	
+	//when login, we get the token, if we add gettoken: true in the body (postman)
 	var params = req.body;
 
 	var email = params.email;
@@ -105,34 +106,34 @@ function loginUser(req, res){
 	User.findOne({email: email}, (err, user) =>{
 		if(err) return res.status(500).send({message: 'Error en la peticion'});
 		if(user)  {
-			//comparacion entre password del post y el almacenado en BD
+			//comparison between password of the post and the stored in BD
 			bcrypt.compare(password, user.password, (err, check)=>{
 				if(check){
 
-					//Si en la peticion está este parametro nos devuelve el token:	
-					//en postman ponemos (en el body): gettoken --> true
+					//If this parameter is in the request, it returns the token:
+					//in postman we put (in the body): gettoken -> true
 					if(params.gettoken){
-						//devolver token y generar token
+						//return token and generate token
 						return res.status(200).send({
-							//libreria jwt y el createToken es el metodo creado en: services/jwt.js
+							//jwt library and the createToken is the method created in: services / jwt.js
 							token: jwt.createToken(user)
 						});
 
 					}else {
-					//devolver datos de usuario
-					user.password = undefined; //eliminamos esta propiedad por seguridad 
-												//y que no la muestre al devolver datos
+					//return user data
+					user.password = undefined; //we eliminate this property for security
+												//and it does not show it when returning data
 					return res.status(200).send({user});
 					}
 					
 					
 				}else {
-					return res.status(404).send({message:'El usuario no se ha podido identificar'});
+					return res.status(404).send({message:'The user has not been able to identify'});
 				}
 
 			});
 		}else {
-			return res.status(404).send({message:'El usuario no se ha podido identificar!!!'});
+			return res.status(404).send({message:'The user has not been able to identify!!!'});
 		}
 	})
 

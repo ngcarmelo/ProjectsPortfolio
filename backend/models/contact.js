@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-//el modelo, el mismo que tenemos en bd, coleccion project
+//the model, the same as we have in bd, project collection
 var ContactSchema = Schema ({
 	name: String,
 	surname: String,
@@ -15,7 +15,7 @@ var ContactSchema = Schema ({
 
 //ahora lo exportamos
 
-//Primer parametro: nombre de la entidad que se guardará en la bd: Proyect
-//mongoose lo comvierte a minusculas y lo pluraliza --> "projects"
-// Asi coincidime con la coleccin que tenemos en la bd
+//First parameter: name of the entity that will be saved in the bd: Contact
+//mongoose converts it to lowercase and pluralizes it -> "contacts"
+// in this way matches the collection we have in the bd
 module.exports = mongoose.model('Contact', ContactSchema);

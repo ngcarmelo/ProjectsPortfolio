@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-//Importamos el modelo y el servicio:
+//import the model and the service:
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project.service';
-// importamos el otro servicio, para subir archivos
+//import the other service, to upload files
 import { UploadService } from '../../services/upload.service';
-// importamos la variable con url de mi api (backend)
+//import the variable with url from my api (backend)
 import { Global } from '../../services/global';
 
 
-//Hay que agregar el servicio con la linea:  providers: [ProjectService]
-//Con el servicio para subir archivos hay que añadir en el array: UploadService
+//We have to add the service with the line: providers: [ProjectService]
+//With the service to upload files you have to add in the array: UploadService
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -24,10 +24,10 @@ export class CreateComponent implements OnInit {
 	public filesToUpload: Array<File>;
 
   constructor(
-  	private _projectService: ProjectService,  //del servicio
-  	private _uploadService: UploadService   //del servicio de subida de archivos
+  	private _projectService: ProjectService,  //from service
+  	private _uploadService: UploadService   //from file upload service
   	) {
-  		this.title = "Crear projecto";
+  		this.title = "Create project";
   		this.project = new Project('','','','',2019,'','');
 
 
@@ -38,31 +38,31 @@ export class CreateComponent implements OnInit {
 
   onSubmit(form){
   	console.log(this.project);
-  	//Guardar los datos basicos
+  	//Save the basic data
   	this._projectService.saveProject(this.project).subscribe(
   		response =>{
   			//console.log(response);
   			if(response.project){
-  				//Subir la imagen...
+  				//Upload the image
 
-  				//Metodo del servicio creado (promesa)
-  				//*parametro 1: url +ruta del metodo del backend (nuestro api), seguido del id
-  				//**parametro 1: mirar rotes/projects del backend
-  				//**parametro 1: el id lo obtenemos de la response al haber subido antes los datos basicos
-  				//**parametro 4, es 'image' porque así esta en el backend, el nombre del campo
+  				//Method of the created service (promise)
+  				//* parameter 1: url + route of the backend method (our api), followed by the id
+  				//** Parameter 2 : look backs / projects from the backend...
+  				//** Parameter 3: we obtain the id of the response to have gone up before the basic data
+  				//** parameter 4, it is 'image' because it is like this in the backend, the name of the field
   			  if(this.filesToUpload){
 
         	this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
   				.then((result:any) => {
 
-            this.save_project = result.project; //guardarmos el resultado en esta variable
+            this.save_project = result.project; //save the result in this variable
   					this.status = 'success'; 
   					console.log(result);
-					form.reset(); // para limpiar el formulario
+					form.reset(); // to clean the form
   				});
   				
           }else {
-            this.save_project = response.project; //guardarmos el resultado en esta variable
+            this.save_project = response.project; //save the result in this variable
             this.status = 'success'; 
           }
   			}else {
@@ -76,7 +76,7 @@ export class CreateComponent implements OnInit {
 
   fileChangeEvent(fileInput: any){
   	//console.log(fileInput);
-  	//en esta ruta se encuentran las prop de la imagen: target.files
+  	//in this route you can find the properties of the image: target.files
   	this.filesToUpload = <Array<File>>fileInput.target.files; //cast
   	//console.log(this.filesToUpload);
   }

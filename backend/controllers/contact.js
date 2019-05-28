@@ -1,13 +1,13 @@
 'use strict'
 
-//Controlador
+//Controller
 
-//importamos nuestro modelo 
+//import of the model
 var Contact = require('../models/contact');
 
-//cargar libreria para poder eliminar imagenes
+//load library to delete images
 var fs = require('fs');
-//para poder cargar rutas fisicas:
+//it allows us to load physical routes:
 var path = require('path');
 
 var moment = require('moment');
@@ -18,20 +18,20 @@ const nodemailer = require('nodemailer');
 var controller = {
 	home: function(req,res){
 		return res.status(200).send({
-			message: 'Soy la home'
+			message: 'It is homepage'
 		});
 
 	},
 	test: function(req, res){
 		return res.status(200).send({
-			message: 'Soy el metodo o accion test del controlador de proyect'
+			message: 'I am the method or action test of the project controller'
 		});
 
 	},
 
 	saveContact: function(req, res){
 		var contact = new Contact();
-	// Como va a ser un post los parametros van en el cuerpo
+	// As it is going to be a post the parameters go in the body
 		var params = req.body;
 
 		contact.name = params.name
@@ -41,10 +41,10 @@ var controller = {
 		contact.created_at = moment().unix();
 		//contact.created_at = params.created_at;
 
-		//para guardarlo en la bd:
+		//save in the database
 
 
-//Enviar email además
+//Send Email *next feature
 			
 			
 			//  var transporter = nodemailer.createTransport({
@@ -72,13 +72,13 @@ var controller = {
 			//  console.log('Message sent: ' + info.response);
 			//  });
 			
-			//Fin del envio del email
+			//End Send email
 
 
 
 		contact.save((err, contactStored) => {
 			if(err) return res.status(500).send({message: 'Error al guardar'});
-			if (!contactStored) return res.status(404).send({message: 'No se ha podido guardar el contacto.'});
+			if (!contactStored) return res.status(404).send({message: 'The contact could not be saved.'});
 
 			return res.status(200).send({contact: contactStored});
 		});
@@ -94,18 +94,18 @@ var controller = {
 	},
 
 	getContact: function(req, res){
-		// Recoger valor que nos viene por la url:
+		// catch  value from url:
 		var contactId = req.params.id;
 		
 
 		if(contactId == null){
-			return res.status(404).send({message: 'El contacto no existe.'});
+			return res.status(404).send({message: 'The contact does not exist'});
 		}
 
-		//Nos busca de la bd por id un objeto que este en ella. (mongoose)
+		//It searches us from bd for id an object that is in it. (mongoose)
 		Contact.findById(contactId, (err, contact) =>{
-			if(err) return res.status(500).send({message: 'Error al devolver los datos.'});
-			if(!contact) return res.status(404).send({message: 'El contacto no existe'});
+			if(err) return res.status(500).send({message: 'Error returning data.'});
+			if(!contact) return res.status(404).send({message: 'The contact does not exist'});
 
 			return res.status(200).send({
 				contact
@@ -115,18 +115,18 @@ var controller = {
 	},
 
 	// getContacts: function(req, res){
-	// 	//opcional .sort('year')
-	// 	//con find buscamos todos los projectos porque no hemos filtrado nada
+	// 	//optionaln  .sort('year')
+	// 	//with 'find' we look for all the projects because we have not filtered anything
 	// 	Contact.find({}).sort('year').exec((err, contacts) =>{
-	// 		if(err) return res.status(500).send({message: 'Error al devolver'});
-	// 		if(!contacts) return res.status(404).send({message: 'No hay contactos que mostrar'});
+	// 		if(err) return res.status(500).send({message: 'Error returning data'});
+	// 		if(!contacts) return res.status(404).send({message: 'There is not contact to show'});
 
 	// 		return res.status(200).send({contacts});
 	// 	});
 	// },
 
 
-//ini modificada
+//start modidified
  getContacts: function(req, res){
 
 
@@ -138,8 +138,8 @@ var controller = {
 		var itemsPerPage = 5;
 		
 			Contact.find({}).sort('year').paginate(page, itemsPerPage,(err, contacts, total) =>{
-			if(err) return res.status(500).send({message: 'Error en la peticion'});
-					if(!contacts) return res.status(404).send({message: 'No hay contactos en la plataforma'});
+			if(err) return res.status(500).send({message: 'Error in the request'});
+					if(!contacts) return res.status(404).send({message: 'No contacts on the platform'});
 					return res.status(200).send({
 							total,
 							pages:  Math.ceil(total/itemsPerPage),
@@ -151,7 +151,7 @@ var controller = {
 		
 },
 
-//fin modificada
+//end modified
 
 
 
@@ -160,8 +160,8 @@ var controller = {
 	deleteContact: function(req, res){
 		var contactId = req.params.id;
 	Contact.findByIdAndRemove(contactId,(err, contactRemoved) => {
-		if(err) return res.status(500).send({message: 'No se ha podido borrar el contacto'});
-		if(!contactRemoved) return res.status(404).send({message: 'No se puede eliminar ese contacto'});
+		if(err) return res.status(500).send({message: 'The contact could not be deleted'});
+		if(!contactRemoved) return res.status(404).send({message: 'You can not delete that contact'});
 		return res.status(200).send({
 			 contact: contactRemoved
 		});
