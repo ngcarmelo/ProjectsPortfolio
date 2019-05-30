@@ -23,21 +23,21 @@ var jwt = require('../services/jwt.js');
 //Test methods
 function home (req, res) {
 
- 	res.status(200).send({
- 		message: 'Hello World from on the NodeJS server'
+	res.status(200).send({
+		message: 'Hello World from on the NodeJS server'
 
- 	});
- }
+	});
+}
 
 
 
 function pruebas (req, res) {
 
- 	res.status(200).send({
- 		message: 'Hello World from on the NodeJS server'
+	res.status(200).send({
+		message: 'Hello World from on the NodeJS server'
 
- 	});
- }
+	});
+}
 
 //Register
 function saveUser (req, res){
@@ -46,33 +46,33 @@ function saveUser (req, res){
 	var user = new User();
 
 	if(params.name && params.surname && params.nick
-	 && params.email && params.password){ 
+		&& params.email && params.password){ 
 
 		user.name = params. name;
-		user.surname = params.surname;
-		user.nick = params.nick;
-		user.email = params.email;
-		user.role = 'ROLE_USER';
-		user.image = null;
+	user.surname = params.surname;
+	user.nick = params.nick;
+	user.email = params.email;
+	user.role = 'ROLE_USER';
+	user.image = null;
 
 		//condition 'or' to search the BD, if there is that email or that nick
 		//we find all those that are repeated
 		//Control duplicate users
 		User.find({ $or: [
-						{email: user.email.toLowerCase()},
-						{nick: user.nick.toLowerCase()}
+			{email: user.email.toLowerCase()},
+			{nick: user.nick.toLowerCase()}
 
-						]}).exec((err, users) => {
+			]}).exec((err, users) => {
 
-							if(err) return res.status(500).send({ message: 'Error in the user request'});
+				if(err) return res.status(500).send({ message: 'Error in the user request'});
 
-							if(users && users.length >= 1){
-								return res.status(200).send({ message: 'The user trying to register already exists!!'});
-							}else {
+				if(users && users.length >= 1){
+					return res.status(200).send({ message: 'The user trying to register already exists!!'});
+				}else {
 
 								//Encrypt the password and save the data:
-		bcrypt.hash(params.password, null, null, (err, hash) =>{
-			user.password = hash;
+								bcrypt.hash(params.password, null, null, (err, hash) =>{
+									user.password = hash;
 			//mongoose function:
 			user.save((err, userStored) => {
 				if(err) return res.status(500).send({ message: 'Error when saving the user'});
@@ -91,7 +91,7 @@ function saveUser (req, res){
 				message: 'Send all the necessary fields'
 			});
 		} 
-}
+	}
 
 //Login
 function loginUser(req, res){
@@ -123,15 +123,15 @@ function loginUser(req, res){
 					//return user data
 					user.password = undefined; //we eliminate this property for security
 												//and it does not show it when returning data
-					return res.status(200).send({user});
-					}
-					
-					
-				}else {
-					return res.status(404).send({message:'The user has not been able to identify'});
-				}
+												return res.status(200).send({user});
+											}
+											
+											
+										}else {
+											return res.status(404).send({message:'The user has not been able to identify'});
+										}
 
-			});
+									});
 		}else {
 			return res.status(404).send({message:'The user has not been able to identify!!!'});
 		}
@@ -143,10 +143,10 @@ function loginUser(req, res){
 
 
 
- module.exports = { 
- 	home, 
- 	pruebas,
- 	saveUser,
- 	loginUser
- 	
- }
+module.exports = { 
+	home, 
+	pruebas,
+	saveUser,
+	loginUser
+	
+}

@@ -15,16 +15,16 @@ export class AboutComponent implements OnInit {
   public identity: string;
 
   constructor(
-     private _userService: UserService
-     ) {
+    private _userService: UserService
+    ) {
   	this.title ="Carmelo Navarro";
   	this.subtitle="Web Developer";
   	this.email ="ng.carmelo@gmail.com";
 
-   }
+  }
 
   ngOnInit() {
-     
+    
   }
 
 }

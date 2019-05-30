@@ -39,12 +39,12 @@ export class ContactService {
 
 	getContacts(page = null):Observable<any>{
 
-	let headers = new HttpHeaders().set('Content-Type','application/json') //forma en que se envian los datos
-								    	.set('Authorization',this.getToken()); 	//sacamos el token del localStorage
+		let headers = new HttpHeaders().set('Content-Type','application/json') //forma en que se envian los datos
+		.set('Authorization',this.getToken()); 	//sacamos el token del localStorage
 
 		return this._http.get(this.url+'contacts/'+page, {headers: headers});
 
- }
+	}
 
 
 
@@ -57,20 +57,20 @@ export class ContactService {
 	}
 
 	deleteContact (id):Observable<any>{
-	let headers = new HttpHeaders().set('Content-Type', 'application/json');
-	return this._http.delete(this.url+'contact/'+id, {headers:headers})
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.delete(this.url+'contact/'+id, {headers:headers})
 
 	}
 
 	updateContact(contact):Observable<any>{
 		let params =JSON.stringify(contact);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-	return this._http.put(this.url+'contact/'+contact._id, params, {headers:headers})
+		return this._http.put(this.url+'contact/'+contact._id, params, {headers:headers})
 	}
 
 
 
-//Methods to obtain localStorage data, user values and lozenged token
+	//Methods to obtain localStorage data, user values and lozenged token
 	getIdentity(){
 
 		//The string of the localstorage is converted to a JSON object
@@ -78,13 +78,13 @@ export class ContactService {
 
 
 
-		 if(identity != "undefined"){
-		
+		if(identity != "undefined"){
+			
 			//console.log('exist identity');
 			this.identity = identity;
-		//	console.log(this.identity);
+			//	console.log(this.identity);
 		}else {
-		//	console.log('identity is null');
+			//	console.log('identity is null');
 			this.identity = null;
 		}
 		return this.identity;

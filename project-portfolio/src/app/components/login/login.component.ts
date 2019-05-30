@@ -29,9 +29,9 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _userService: UserService //Variable of the UserService service
     ) {
-  this.title ='Sign in';
-  this.user = new User("", "","","","","","ROLE_USER",""); // it is not necessary to indicate the role, the backend will be in charge
-   }
+    this.title ='Sign in';
+    this.user = new User("", "","","","","","ROLE_USER",""); // it is not necessary to indicate the role, the backend will be in charge
+  }
 
 
   ngOnInit() {
@@ -47,79 +47,79 @@ export class LoginComponent implements OnInit {
     //  alert(this.user.email);
 
 
-//Login the user and get their data
+    //Login the user and get their data
     this._userService.signup(this.user).subscribe(
       response =>{
         this.identity = response.user; //will contain the logged-in user
-          // console.log(this.identity); //user in the consola
-      
-           
-      if(!this.identity  || !this.identity._id){
-        this.status = 'error';
-      }else {
-           //this.status ='success';
-           //Persist user data, localstorage
-           //it is necessary to save it in the form of a string:
-           localStorage.setItem('identity', JSON.stringify(this.identity));
+        // console.log(this.identity); //user in the consola
+        
+        
+        if(!this.identity  || !this.identity._id){
+          this.status = 'error';
+        }else {
+          //this.status ='success';
+          //Persist user data, localstorage
+          //it is necessary to save it in the form of a string:
+          localStorage.setItem('identity', JSON.stringify(this.identity));
 
-           //get token
-           this.getToken();
+          //get token
+          this.getToken();
 
-      }          
+        }          
 
 
       },
       error =>{
-          var errorMessage = <any> error;
-          console.log(errorMessage);
-         
-          if(errorMessage != null){
-            this.status = 'error';
-          }
+        var errorMessage = <any> error;
+        console.log(errorMessage);
+        
+        if(errorMessage != null){
+          this.status = 'error';
+        }
 
 
       });
-   
+    
 
 
   }
 
 
 
-getToken(){
+  getToken(){
 
 
- //Login the user and get their data
+    //Login the user and get their data
     this._userService.signup(this.user, 'true').subscribe(
       response =>{
         this.token = response.token; //will contain the logged-in user
         
         console.log(this.token); //token
-           
-      if(this.token.length <= 0){
-        this.status = 'error';
+        
+        if(this.token.length <= 0){
+          this.status = 'error';
 
-      }else {
+        }else {
           
-           //Persist Token, localstorage
-           localStorage.setItem('token', this.token);
+          //Persist Token, localstorage
+          localStorage.setItem('token', this.token);
 
-            this.status = 'success';
-            this._router.navigate(['/']);
+          this.status = 'success';
+          this._router.navigate(['/']);
           
-      }          
+        }          
 
       },
       error =>{
-          var errorMessage = <any> error;
-          console.log(errorMessage);
-          if(errorMessage != null){
-            this.status = 'error';
-          }
+        var errorMessage = <any> error;
+        console.log(errorMessage);
+        if(errorMessage != null){
+          this.status = 'error';
+        }
 
       });
 
-}
+  }
 
 }
 

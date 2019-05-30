@@ -1,21 +1,21 @@
 
 <div class="container">
-<div class="">
-	<h2 class="title">{{title}}</h2>
+	<div class="">
+		<h2 class="title">{{title}}</h2>
 
-	<div class="alert alert-success" *ngIf="status =='success'">
-		Registration completed correctly, <a [routerLink]="['/login']">Sign in here</a>
-		
-	</div>
+		<div class="alert alert-success" *ngIf="status =='success'">
+			Registration completed correctly, <a [routerLink]="['/login']">Sign in here</a>
+			
+		</div>
 
-<div class="alert alert-danger" *ngIf="status =='error'">
-		The registration could not be completed, maybe your email or nickname is already in use,
-try again 
-		
-	</div>
+		<div class="alert alert-danger" *ngIf="status =='error'">
+			The registration could not be completed, maybe your email or nickname is already in use,
+			try again 
+			
+		</div>
 
 
-	<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
+		<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
 	<!-- 	<p>
 			<label >Nombre</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required/>
@@ -23,16 +23,16 @@ try again
 				El nombre es obligatorio!!
 				
 			</span>
-			</p> -->
+		</p> -->
 
-	<div class="form-group">
+		<div class="form-group">
 			<label for="name" >Name</label>
 			<input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required/>
 			<small class="form-text text-muted" *ngIf="!name.valid && name.touched">
 				Name is required!
 				
 			</small>
-			</div>
+		</div>
 
 			<!-- 	<p>
 			<label >Apellidos</label>
@@ -43,52 +43,52 @@ try again
 			</span>
 		
 		</p>
- -->
-			<div class="form-group">
-			<label for="surname" >Surname</label>
-			<input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required/>
-			<small class="form-text text-muted" *ngIf="!surname.valid && surname.touched">
-				Surname is required!
-				
-			</small>
-			</div>
+	-->
+	<div class="form-group">
+		<label for="surname" >Surname</label>
+		<input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required/>
+		<small class="form-text text-muted" *ngIf="!surname.valid && surname.touched">
+			Surname is required!
+			
+		</small>
+	</div>
 
 
-		
-		
-		<div class="form-group">
-			<label for="nick" >Nick</label>
-			<input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required/>
-			<small class="form-text text-muted" *ngIf="!nick.valid && nick.touched">
-				El nick es obligatorio!
-				
-			</small>
-			</div>
+	
+	
+	<div class="form-group">
+		<label for="nick" >Nick</label>
+		<input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required/>
+		<small class="form-text text-muted" *ngIf="!nick.valid && nick.touched">
+			El nick es obligatorio!
+			
+		</small>
+	</div>
 
 
 
 
 
-			<div class="form-group">
-			<label for="email" >Email</label>
-			<input type="email" name="email" #email="ngModel" [(ngModel)]="user.email"
-			 class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-			<small class="form-text text-muted"  *ngIf="!email.valid && email.touched">
-				Emaill is required!
-			</small>
-			</div>
+	<div class="form-group">
+		<label for="email" >Email</label>
+		<input type="email" name="email" #email="ngModel" [(ngModel)]="user.email"
+		class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+		<small class="form-text text-muted"  *ngIf="!email.valid && email.touched">
+			Emaill is required!
+		</small>
+	</div>
 
-		
-		
+	
+	
 
-		
-			<div class="form-group">
-			<label for="password" >Password</label>
-			<input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required/>
-			<small class="form-text text-muted"  *ngIf="!password.valid && password.touched">
-				Password is required!
-			</small>
-			</div>
+	
+	<div class="form-group">
+		<label for="password" >Password</label>
+		<input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required/>
+		<small class="form-text text-muted"  *ngIf="!password.valid && password.touched">
+			Password is required!
+		</small>
+	</div>
 
 
 
@@ -97,7 +97,7 @@ try again
 
 	<input type="submit" value="{{title}}" [disabled]="!registerForm.form.valid" class="btn btn-success" 
 	>
-	</form>
+</form>
 
 </div>
 

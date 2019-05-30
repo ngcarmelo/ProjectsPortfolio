@@ -1,31 +1,31 @@
 
 
 <div *ngIf="contact" class="container">
-<div class="row">	
-<div class="col-12">	
-  	<div class="data card">
-  		<div class="card-body">
-    <h3 class="title-message-detail card-title">{{contact.name}} {{contact.surname}}</h3>
-	<h3 class="title-message-detail card-title">{{contact.email}}</h3>
-	<h3 class="title-message-detail card-title">{{contact.created_at.date | amLocale: 'en' | amDateFormat:'MMMM DD, YYYY  HH:mm' }}</h3>
-	<p class="col-12 card-text title ">{{contact.text}}</p>
-	
+	<div class="row">	
+		<div class="col-12">	
+			<div class="data card">
+				<div class="card-body">
+					<h3 class="title-message-detail card-title">{{contact.name}} {{contact.surname}}</h3>
+					<h3 class="title-message-detail card-title">{{contact.email}}</h3>
+					<h3 class="title-message-detail card-title">{{contact.created_at.date | amLocale: 'en' | amDateFormat:'MMMM DD, YYYY  HH:mm' }}</h3>
+					<p class="col-12 card-text title ">{{contact.text}}</p>
+					
 
-	<p *ngIf="confirm == false" class="col-12 col-md-2">
-		<!-- <a [routerLink]="['/editar-contact', contact._id]" class="button-edit">Editar</a> -->
-		<!-- <a  [routerLink]="['/editar-contact', contact._id]" class="btn btn-warning button-edit">Editar</a> -->
-		<!-- <a (click)="setConfirm(true)" class="button-delete">Borrar</a> -->
-		<button  (click)="setConfirm(true)" class="btn btn-danger button-delete">Delete</button>
-	</p>
+					<p *ngIf="confirm == false" class="col-12 col-md-2">
+						<!-- <a [routerLink]="['/editar-contact', contact._id]" class="button-edit">Editar</a> -->
+						<!-- <a  [routerLink]="['/editar-contact', contact._id]" class="btn btn-warning button-edit">Editar</a> -->
+						<!-- <a (click)="setConfirm(true)" class="button-delete">Borrar</a> -->
+						<button  (click)="setConfirm(true)" class="btn btn-danger button-delete">Delete</button>
+					</p>
 
-	<p *ngIf="confirm == true" class="col-12 col-md-2">
-		<span class="confirm">¿Are you sure to delete this message?? </span>
-		<a (click)="setConfirm(false)" class="btn btn-warning button-edit">Cancel</a>
-		<a (click)="deleteContact(contact._id)" class="btn btn-danger button-delete">Eliminar Def.</a>
-	</p>
+					<p *ngIf="confirm == true" class="col-12 col-md-2">
+						<span class="confirm">¿Are you sure to delete this message?? </span>
+						<a (click)="setConfirm(false)" class="btn btn-warning button-edit">Cancel</a>
+						<a (click)="deleteContact(contact._id)" class="btn btn-danger button-delete">Eliminar Def.</a>
+					</p>
 
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-</div>
-</div>
 </div>

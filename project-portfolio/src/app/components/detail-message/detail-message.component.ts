@@ -24,12 +24,12 @@ export class DetailMessageComponent implements OnInit {
   	private _contactService: ContactService,
   	private _router: Router, // to be able to get routes
   	private _route: ActivatedRoute //to be able to get routes
-  		) {
-  		
-  		this.url = Global.url;
-  		this.confirm = false;
+    ) {
+    
+    this.url = Global.url;
+    this.confirm = false;
 
-  		 }
+  }
 
   ngOnInit() {
 
@@ -42,14 +42,14 @@ export class DetailMessageComponent implements OnInit {
 
   getContact(id){
     //with subscribe we can collect the answer of the method
-  	this._contactService.getContact(id).subscribe(
-  		response => {
-  			this.contact = response.contact;
-  		}, 
-  		error =>{
-  			console.log(<any>error);
-  		}
-  		)
+    this._contactService.getContact(id).subscribe(
+      response => {
+        this.contact = response.contact;
+      }, 
+      error =>{
+        console.log(<any>error);
+      }
+      )
   }
 
   setConfirm(confirm){
@@ -62,12 +62,12 @@ export class DetailMessageComponent implements OnInit {
   		response => {
   			if(response.contact){
   				//redirection
-  					this._router.navigate(['/messages']);
-  			}
-  		},
-  		error => {
-  			console.log(<any>error);
-  		});
+          this._router.navigate(['/messages']);
+        }
+      },
+      error => {
+        console.log(<any>error);
+      });
 
   }
 

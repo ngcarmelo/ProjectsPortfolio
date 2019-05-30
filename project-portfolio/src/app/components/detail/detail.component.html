@@ -1,46 +1,35 @@
 <div *ngIf="project" class="container">
-<div class="row">
-	<div class="col-lg-8">
-	 <div class="image" *ngIf="project.image">
-   	<img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt="" class="image-responsive">
-   </div>
-   </div>
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="image" *ngIf="project.image">
+				<img src="{{url+'get-image/'+project.image}}" *ngIf="project.image" alt="" class="image-responsive">
+			</div>
+		</div>
 
+		<div class="col-lg-4">
+			<h2 class="project-detail-title">{{project.name}}</h2>
+			<p class="field-project-detail">{{project.description}}</p>
+			<p class="field-project-detail">{{project.category}}</p>
+			<p class="field-project-detail">{{project.langs}}</p>
+		</div>	
 
-	<div class="col-lg-4">
-	<h2 class="project-detail-title">{{project.name}}</h2>
-	<p class="field-project-detail">{{project.description}}</p>
-	<p class="field-project-detail">{{project.category}}</p>
-	<p class="field-project-detail">{{project.langs}}</p>
-	</div>	
+	</div>
+	
+	<div class="row">
 
+		<p *ngIf="confirm == false" class="col-12 col-lg-3">
+			<a [routerLink]="['/editar-proyecto', project._id]" class="button-edit btn btn-warning">Edit</a>
+			<a (click)="setConfirm(true)" class="button-delete btn btn-danger">Delete</a>
+		</p>
+
+		<p *ngIf="confirm == true"  class="col-12 col-lg-3">
+			<span class="confirm">¿Are you sure to eliminate this project?? </span>
+			<a (click)="setConfirm(false)" class="button-edit btn btn-warning">Cancel</a>
+			<a (click)="deleteProject(project._id)" class="button-delete btn btn-danger">Delete Definitively</a>
+		</p>
 
 	</div>
 
 
-	
- <div class="row">
- 
- 		
-  
-	<p *ngIf="confirm == false" class="col-12 col-lg-3">
-		<a [routerLink]="['/editar-proyecto', project._id]" class="button-edit btn btn-warning">Edit</a>
-		<a (click)="setConfirm(true)" class="button-delete btn btn-danger">Delete</a>
-	</p>
-
-	<p *ngIf="confirm == true"  class="col-12 col-lg-3">
-		<span class="confirm">¿Are you sure to eliminate this project?? </span>
-		<a (click)="setConfirm(false)" class="button-edit btn btn-warning">Cancel</a>
-		<a (click)="deleteProject(project._id)" class="button-delete btn btn-danger">Delete Definitively</a>
-	</p>
-
-
- 	
-
- </div>
-
-
-  
-
 <!-- </div>
- --></div>
+--></div>

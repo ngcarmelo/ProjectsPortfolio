@@ -13,38 +13,38 @@
 
 		</a>
 	</li>
-	</ul> -->
+</ul> -->
 
 
 
 <ul class="col-12 pt-5">
 	
-		<li *ngFor="let contact of contacts" class="list-messages"   >
+	<li *ngFor="let contact of contacts" class="list-messages"   >
 		<div class="card pt-10">
-		<div class="card-body">
-			<a [routerLink]="['/message', contact._id]" class="card-link">
-	 
-<div class="row ">
-		<h3 class="col-12 col-md-4 card-title field-name">{{contact.name}} {{contact.surname}}</h3>
-		<p  class="col-12 col-md-4 card-text field-message">{{contact.text  | limitTo : 40 }}</p>
-		<!-- <p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'en' | amTimeAgo }} </p> -->
-		<p  class="col-12 col-md-4 card-text field-message">{{contact.created_at.date | amLocale: 'en' | amDateFormat:'MMMM DD, YYYY  HH:mm' }} </p>
-		
-		</div>
-	</a>
+			<div class="card-body">
+				<a [routerLink]="['/message', contact._id]" class="card-link">
+					
+					<div class="row ">
+						<h3 class="col-12 col-md-4 card-title field-name">{{contact.name}} {{contact.surname}}</h3>
+						<p  class="col-12 col-md-4 card-text field-message">{{contact.text  | limitTo : 40 }}</p>
+						<!-- <p  class="col-12 col-md-4">{{contact.created_at | amFromUnix | amLocale: 'en' | amTimeAgo }} </p> -->
+						<p  class="col-12 col-md-4 card-text field-message">{{contact.created_at.date | amLocale: 'en' | amDateFormat:'MMMM DD, YYYY  HH:mm' }} </p>
+						
+					</div>
+				</a>
 
 
-	</div>
+			</div>
 		</div>
 
 	</li>
 	
 
 
-<!-- page: actual page, pages: total pages -->
+	<!-- page: actual page, pages: total pages -->
 	
 	<nav aria-label="Page navigation pagination">
-	<ul class="pagination pull-right col-12 pagination-lg justify-content-center">
+		<ul class="pagination pull-right col-12 pagination-lg justify-content-center">
 			
 			<li class="page-item" *ngIf="page > 1"><a class="page-link" [routerLink]="['/messages', prev_page]">Previous</a></li>
 			<li class="page-item" *ngIf="pages != page"><a class="page-link" [routerLink]="['/messages', next_page]">Next</a></li>
@@ -52,10 +52,10 @@
 
 	</nav>
 
-	</ul>
+</ul>
 
 
-	
+
 <!-- <div class="table-responsive">
 <table class="table">
 		<tr *ngFor="let contact of contacts" class="list-messages"   >

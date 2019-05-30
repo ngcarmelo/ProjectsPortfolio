@@ -22,9 +22,9 @@ export class DetailComponent implements OnInit {
   	private _router: Router, // to be able to receive routes and parameters
   	private _route: ActivatedRoute //to be able to receive routes and parameters
   	) {
-  			this.url = Global.url;
-  			this.confirm = false;
-  	 }
+    this.url = Global.url;
+    this.confirm = false;
+  }
 
   ngOnInit() {
   	//to collect the parameter that we get through the url
@@ -37,14 +37,14 @@ export class DetailComponent implements OnInit {
 
   getProject(id){
     //with the subscribe we can pick up the answer of the method
-  	this._projectService.getProject(id).subscribe(
-  		response => {
-  			this.project = response.project;
-  		}, 
-  		error =>{
-  			console.log(<any>error);
-  		}
-  		)
+    this._projectService.getProject(id).subscribe(
+      response => {
+        this.project = response.project;
+      }, 
+      error =>{
+        console.log(<any>error);
+      }
+      )
   }
 
   setConfirm(confirm){
@@ -57,12 +57,12 @@ export class DetailComponent implements OnInit {
   		response => {
   			if(response.project){
   				//redirection
-  					this._router.navigate(['/proyectos']);
-  			}
-  		},
-  		error => {
-  			console.log(<any>error);
-  		});
+          this._router.navigate(['/proyectos']);
+        }
+      },
+      error => {
+        console.log(<any>error);
+      });
 
   }
 

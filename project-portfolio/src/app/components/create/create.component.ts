@@ -20,18 +20,18 @@ export class CreateComponent implements OnInit {
 	public title: string;
 	public project: Project; //del modelo
   public save_project;
-	public status: string;
-	public filesToUpload: Array<File>;
+  public status: string;
+  public filesToUpload: Array<File>;
 
   constructor(
   	private _projectService: ProjectService,  //from service
   	private _uploadService: UploadService   //from file upload service
   	) {
-  		this.title = "Create project";
-  		this.project = new Project('','','','',2019,'','');
+    this.title = "Create project";
+    this.project = new Project('','','','',2019,'','');
 
 
-  	 }
+  }
 
   ngOnInit() {
   }
@@ -50,28 +50,28 @@ export class CreateComponent implements OnInit {
   				//** Parameter 2 : look backs / projects from the backend...
   				//** Parameter 3: we obtain the id of the response to have gone up before the basic data
   				//** parameter 4, it is 'image' because it is like this in the backend, the name of the field
-  			  if(this.filesToUpload){
+          if(this.filesToUpload){
 
-        	this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
-  				.then((result:any) => {
+            this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
+            .then((result:any) => {
 
-            this.save_project = result.project; //save the result in this variable
-  					this.status = 'success'; 
-  					console.log(result);
-					form.reset(); // to clean the form
-  				});
-  				
+              this.save_project = result.project; //save the result in this variable
+              this.status = 'success'; 
+              console.log(result);
+              form.reset(); // to clean the form
+            });
+            
           }else {
             this.save_project = response.project; //save the result in this variable
             this.status = 'success'; 
           }
-  			}else {
-  				this.status = 'failed';
-  			}
-  		},
-  		error => {
-  			console.log(<any>error);
-  		});
+        }else {
+          this.status = 'failed';
+        }
+      },
+      error => {
+        console.log(<any>error);
+      });
   }
 
   fileChangeEvent(fileInput: any){

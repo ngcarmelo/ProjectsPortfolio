@@ -27,14 +27,14 @@ var controller = {
 	saveProject: function(req, res){
 		var project = new Project();
 	// it's going to be a post so the parameters go in the body
-		var params = req.body;
+	var params = req.body;
 
-		project.name = params.name
-		project.description = params.description;
-		project.category = params.category;
-		project.year = params.year;
-		project.langs = params.langs;
-		project.image = null;
+	project.name = params.name
+	project.description = params.description;
+	project.category = params.category;
+	project.year = params.year;
+	project.langs = params.langs;
+	project.image = null;
 
 		//save in db:
 
@@ -109,13 +109,13 @@ var controller = {
 
 	deleteProject: function(req, res){
 		var projectId = req.params.id;
-	Project.findByIdAndRemove(projectId,(err, projectRemoved) => {
-		if(err) return res.status(500).send({message: 'The project could not be deleted'});
-		if(!projectRemoved) return res.status(404).send({message: 'Can not delete that project'});
-		return res.status(200).send({
-			 project: projectRemoved
+		Project.findByIdAndRemove(projectId,(err, projectRemoved) => {
+			if(err) return res.status(500).send({message: 'The project could not be deleted'});
+			if(!projectRemoved) return res.status(404).send({message: 'Can not delete that project'});
+			return res.status(200).send({
+				project: projectRemoved
+			});
 		});
-	});
 
 	},
 
@@ -137,7 +137,7 @@ var controller = {
 
 			if (fileExt == 'png' || fileExt == 'jpg' | fileExt == 'jpeg' | fileExt == 'gif'){
 
-			Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, (err, projectUpdated) =>{
+				Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, (err, projectUpdated) =>{
 					
 					if(err) return res.status(500).send({message: 'The image has not been uploaded'});
 
@@ -147,19 +147,19 @@ var controller = {
 									//files: req.files
 									project: projectUpdated
 								});
-					});
+				});
 
 
 			// if it does not have the required extension ... we delete
-			}else {
+		}else {
 				//thanks to the extension fs we can delete files
-					fs.unlink(filePath, (err)=>{
-						return res.status(200).send({ message: 'La extension no es valida'});
+				fs.unlink(filePath, (err)=>{
+					return res.status(200).send({ message: 'La extension no es valida'});
 
-					});
+				});
 			}
 
-		
+			
 			
 		}else {
 			return res.status(200).send({

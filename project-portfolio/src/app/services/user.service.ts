@@ -53,13 +53,13 @@ export class UserService{
 
 
 
-		 if(identity != "undefined"){
-		
+		if(identity != "undefined"){
+			
 			//console.log('exist identity');
 			this.identity = identity;
-		//	console.log(this.identity);
+			//	console.log(this.identity);
 		}else {
-		//	console.log('identity is null');
+			//	console.log('identity is null');
 			this.identity = null;
 		}
 		return this.identity;

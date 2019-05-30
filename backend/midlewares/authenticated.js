@@ -17,12 +17,12 @@ exports.ensureAuth = function(req, res, next){
 	// to remove double or single quotes from the token:
 	var token = req.headers.authorization.replace(/['"]+/g, '');
 	try{
-			var payload = jwt.decode(token, secret);
-			if(payload.exp <= moment().unix()){
-				return res.status(401).send({ message: 'The token has expired'});
-			}
+		var payload = jwt.decode(token, secret);
+		if(payload.exp <= moment().unix()){
+			return res.status(401).send({ message: 'The token has expired'});
+		}
 	}catch(ex){
-			return res.status(404).send({ message: 'The token is not valid'});
+		return res.status(404).send({ message: 'The token is not valid'});
 	}
 	
 	// ** object of the registered user: //is the decoded and understandable token

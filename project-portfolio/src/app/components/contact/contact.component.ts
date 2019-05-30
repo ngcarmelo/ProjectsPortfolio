@@ -5,8 +5,8 @@ import { ContactService } from '../../services/contact.service';
 // import { UserService } from '../../services/user.service';
 
 
- //declare var jQuery:any;
- declare var $:any;
+//declare var jQuery:any;
+declare var $:any;
 
 @Component({
   selector: 'app-contact',
@@ -21,7 +21,7 @@ export class ContactComponent implements OnInit {
   public contact: Contact; //del modelo
   public save_contact;
   public status: string;
-	public title: string;
+  public title: string;
   
   
 
@@ -29,21 +29,21 @@ export class ContactComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _contactService: ContactService,
-     // private _userService: UserService
+    // private _userService: UserService
     )
 
-     {
-        this.contact = new Contact('','','','','','');
-      	this.title = "Send Message";
-   }
+  {
+    this.contact = new Contact('','','','','','');
+    this.title = "Send Message";
+  }
 
   ngOnInit() {
-   
+    
   	
-    }
+  }
 
 
- onSubmit(form){
+  onSubmit(form){
     //Method of the userService Service:
     //Since it returns an observable we use subscribe
     this._contactService.saveContact(this.contact).subscribe(
@@ -57,7 +57,7 @@ export class ContactComponent implements OnInit {
           form.reset(); //reset form
 
         }else {
-        this.status ='error';          
+          this.status ='error';          
         }
       },
       error => {
@@ -68,7 +68,7 @@ export class ContactComponent implements OnInit {
       );
 
   }
- 
+  
 
   
 }

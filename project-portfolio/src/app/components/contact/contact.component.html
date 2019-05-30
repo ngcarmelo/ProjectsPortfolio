@@ -1,68 +1,66 @@
-<div class="container">
-	<h2 class="title">Contact</h2>
-<div id="">
-<p class="title-about">This is the contact page, you can send us any questions</p>
-</div>
-
-<div class="alert alert-success" *ngIf="status =='success'">
-			The message has been sent successfully
-		
+	<div class="container">
+		<h2 class="title">Contact</h2>
+	<div id="">
+	<p class="title-about">This is the contact page, you can send us any questions</p>
 	</div>
 
-<div class="alert alert-danger" *ngIf="status =='error'">
-		The message could not be sent
+	<div class="alert alert-success" *ngIf="status =='success'">
+				The message has been sent successfully
+			
+		</div>
+
+	<div class="alert alert-danger" *ngIf="status =='error'">
+			The message could not be sent
+			
+		</div>
+
+
+	<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
+			<div class="form-group">
+				<label for="name" >Name</label>
+				<input type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" class="form-control" required/>
+				<small class="form-text text-muted" *ngIf="!name.valid && name.touched">
+					Name is required!
+					
+				</small>
+				</div>
+
+				<div class="form-group">
+				<label for="surname" >Surname</label>
+				<input type="text" name="surname" #surname="ngModel" [(ngModel)]="contact.surname" class="form-control" required/>
+				<small class="form-text text-muted" *ngIf="!surname.valid && surname.touched">
+					Surname is required!
+				</small>
+			</div>
+
+
 		
-	</div>
-
-
-<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-6">
-		<div class="form-group">
-			<label for="name" >Name</label>
-			<input type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" class="form-control" required/>
-			<small class="form-text text-muted" *ngIf="!name.valid && name.touched">
-				Name is required!
-				
-			</small>
+			<div class="form-group">
+				<label for="email" >Email</label>
+				<input type="email" name="email" #email="ngModel" [(ngModel)]="contact.email"
+				 class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+				<small class="form-text text-muted"  *ngIf="!email.valid && email.touched">
+					 Email is required!
+					
+				</small>
+			
 			</div>
 
 			<div class="form-group">
-			<label for="surname" >Surname</label>
-			<input type="text" name="surname" #surname="ngModel" [(ngModel)]="contact.surname" class="form-control" required/>
-			<small class="form-text text-muted" *ngIf="!surname.valid && surname.touched">
-				Surname is required!
-			</small>
-		</div>
+				<label for="text">Email subject</label>
+				<textarea name="text" #text="ngModel" [(ngModel)]="contact.text" class="form-control" required ></textarea>
+				<small class="form-text text-muted" *ngIf="!text.valid && text.touched">
+					Email subject is required!
+				</small>
+			</div>
+
+					
+		<input type="submit" value="{{title}}" [disabled]="!registerForm.form.valid" class="btn btn-success" 
+		>
+		</form>
 
 
-	
-		<div class="form-group">
-			<label for="email" >Email</label>
-			<input type="email" name="email" #email="ngModel" [(ngModel)]="contact.email"
-			 class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-			<small class="form-text text-muted"  *ngIf="!email.valid && email.touched">
-				 Email is required!
-				
-			</small>
+	<div> 
 		
-		</div>
-
-		<div class="form-group">
-			<label for="text">Email subject</label>
-			<textarea name="text" #text="ngModel" [(ngModel)]="contact.text" class="form-control" required ></textarea>
-			<small class="form-text text-muted" *ngIf="!text.valid && text.touched">
-				Email subject is required!
-			</small>
-		</div>
-
-				
-	<input type="submit" value="{{title}}" [disabled]="!registerForm.form.valid" class="btn btn-success" 
-	>
-	</form>
-
-
-
-
-<div> 
-	
 
 

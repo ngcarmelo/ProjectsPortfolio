@@ -12,68 +12,68 @@
 
 	<!-- we include 'projectForm inside the onSubmit to be able to reset it' -->
 	<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)" class="col-md-6" >
-	
 		
-	 <div class="form-group">
-   		 <label for="name">Name</label>
-   		 <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name" required placeholder="Introduce a Name">
-   		 <small id="" class="form-text text-muted" *ngIf="name.touched && !name.valid"> Name is required</small>
+		
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name" required placeholder="Introduce a Name">
+			<small id="" class="form-text text-muted" *ngIf="name.touched && !name.valid"> Name is required</small>
 		</div>
 
-     <div class="form-group">
-	    <label for="description">Description</label>
-	    <textarea  class="form-control" name="description" #description="ngModel" [(ngModel)]="project.description" required  placeholder="Introduce a Description"></textarea>
-	    <small  class="form-text text-muted"  *ngIf="description.touched && !description.valid"> Description is required</small>
-  		</div>
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea  class="form-control" name="description" #description="ngModel" [(ngModel)]="project.description" required  placeholder="Introduce a Description"></textarea>
+			<small  class="form-text text-muted"  *ngIf="description.touched && !description.valid"> Description is required</small>
+		</div>
 
 
-	 <div class="form-group">
-    	<label for="category">Category</label>
-    	<input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required class="form-control" placeholder="Introduce a Category">
-    	<small  class="form-text text-muted" *ngIf="category.touched && !category.valid">Category is required</small>
- 		 </div>
+		<div class="form-group">
+			<label for="category">Category</label>
+			<input type="text" name="category" #category="ngModel" [(ngModel)]="project.category" required class="form-control" placeholder="Introduce a Category">
+			<small  class="form-text text-muted" *ngIf="category.touched && !category.valid">Category is required</small>
+		</div>
 
-	 <div class="form-group">
-	    <label for="year">Year</label>
-	    <input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" class="form-control"  placeholder="Introduce a year">
-	    <small  class="form-text text-muted">Introduce a Year</small>
-	  	</div>
+		<div class="form-group">
+			<label for="year">Year</label>
+			<input type="number" name="year" #year="ngModel" [(ngModel)]="project.year" class="form-control"  placeholder="Introduce a year">
+			<small  class="form-text text-muted">Introduce a Year</small>
+		</div>
 
-	 <div class="form-group">
-	    <label for="langs">Languages</label>
-    	  <input  type="text" name="langs" #name="ngModel" [(ngModel)]="project.langs" required class="form-control"  placeholder="Introduce a Language">
-	  <!--   <small  class="form-text text-muted" *ngIf="langs.touched && !langs.valid">Los lenguajes son obligatorios</small> -->
-	  	</div>
+		<div class="form-group">
+			<label for="langs">Languages</label>
+			<input  type="text" name="langs" #name="ngModel" [(ngModel)]="project.langs" required class="form-control"  placeholder="Introduce a Language">
+			<!--   <small  class="form-text text-muted" *ngIf="langs.touched && !langs.valid">Los lenguajes son obligatorios</small> -->
+		</div>
 
 
-	 <div class="form-group">
-    	<label for="image">Image of the Project</label>
-    	<span class="image" *ngIf="project.image" style="float:none;">
-			<img  src="{{url+'get-image/'+project.image}}" style="width: 100px; margin-bottom: 10px; " alt="">
-		</span>
+		<div class="form-group">
+			<label for="image">Image of the Project</label>
+			<span class="image" *ngIf="project.image" style="float:none;">
+				<img  src="{{url+'get-image/'+project.image}}" style="width: 100px; margin-bottom: 10px; " alt="">
+			</span>
 
   	 <!--   <input type="file" name="image" placeholder="Upload imagen" (change)="fileChangeEvent($event)"  class="form-control-file">
-   	   <small class="form-text text-muted">Choose an image</small> -->
+  	 	<small class="form-text text-muted">Choose an image</small> -->
 
 
 
-	<div class="input-group mb-3">
-    <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="fileChangeEvent($event)">
-    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+  	 	<div class="input-group mb-3">
+  	 		<div class="custom-file">
+  	 			<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="fileChangeEvent($event)">
+  	 			<label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+  	 		</div>
+  	 	</div>
+
+
+
+
+  	 </div>
+
+
+  	 <!-- with disabled giving the name of the form, deactivate it while it is not valid  -->
+  	 <input type="submit" value="Send"  class="btn btn-primary" [disabled]="!projectForm.valid">
+
+  	</form>
+
+
   </div>
-</div>
-
-
-
-
-  	</div>
-
-
-		<!-- with disabled giving the name of the form, deactivate it while it is not valid  -->
-		<input type="submit" value="Send"  class="btn btn-primary" [disabled]="!projectForm.valid">
-
-	</form>
-
-
-</div>

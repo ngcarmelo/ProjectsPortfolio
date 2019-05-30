@@ -22,25 +22,25 @@ export class AppComponent {
   public identity:string;
 
 
-constructor(
-  
+  constructor(
+    
     private _userService: UserService //Variable of the UserService service
     ) {
 
- 	   
-   }
+    
+  }
 
-   ngOnInit(){
+  ngOnInit(){
 
   	this.identity = this._userService.getIdentity();
   	console.log(this.identity);
 
   }
 
- ngDoCheck(){
+  ngDoCheck(){
     
-        this.identity = this._userService.getIdentity();
-      
+    this.identity = this._userService.getIdentity();
+    
   }
 
 

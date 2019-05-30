@@ -29,25 +29,25 @@ export class MessagesComponent implements OnInit {
   public pages;
 
   constructor(
-  	  	private _contactService: ContactService,
-        private _route: ActivatedRoute,
-        private _router: Router,
-	) {
+    private _contactService: ContactService,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    ) {
 
   	this.url = Global.url;
     
- }
+  }
 
-   ngOnInit() {
+  ngOnInit() {
 
   	//this.getContacts();
 
 
-      this.actualPage();
+    this.actualPage();
   }
 
 
- actualPage(){
+  actualPage(){
     
     this._route.params.subscribe(params =>{
       let page = +params['page']; 
@@ -67,8 +67,8 @@ export class MessagesComponent implements OnInit {
           this.prev_page =1;
         }
       }
-    
-     this.getContacts(page);
+      
+      this.getContacts(page);
 
     });
 
@@ -77,31 +77,31 @@ export class MessagesComponent implements OnInit {
 
 
 
-getContacts(page){
+  getContacts(page){
     this._contactService.getContacts(page).subscribe(
       response =>{
         if(!response.contacts){
           this.status='status';
         }else {
           console.log(response);
-         this.total = response.total;
-         this.contacts = response.contacts;
-         this.pages = response.pages;
-        
-         if(page > this.pages){
-           this._router.navigate(['/messages',1]); 
-         }
+          this.total = response.total;
+          this.contacts = response.contacts;
+          this.pages = response.pages;
+          
+          if(page > this.pages){
+            this._router.navigate(['/messages',1]); 
+          }
 
         }
 
-    },error =>{
+      },error =>{
         var errorMessage = <any>error;
         console.log(errorMessage);
 
         if(errorMessage != null){
           this.status ='error';
         }
-    });
+      });
 
   }
 
@@ -110,20 +110,20 @@ getContacts(page){
 
 
   // getContacts(){
-  // 	this._contactService.getContacts().subscribe(
-  // 		response => {
-  // 			//console.log(response);
-  // 			if(response.contacts){
-  // 				//we save the response in the created variable
-  // 				this.contacts = response.contacts
-         
-  // 			}
-  // 		},
-  // 		error => {
-  // 			console.log(<any>error);
-  // 		});
+    // 	this._contactService.getContacts().subscribe(
+    // 		response => {
+      // 			//console.log(response);
+      // 			if(response.contacts){
+        // 				//we save the response in the created variable
+        // 				this.contacts = response.contacts
+        
+        // 			}
+        // 		},
+        // 		error => {
+          // 			console.log(<any>error);
+          // 		});
 
-  // }
+          // }
 
 
-}
+        }

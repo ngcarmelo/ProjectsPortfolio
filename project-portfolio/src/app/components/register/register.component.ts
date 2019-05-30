@@ -26,17 +26,17 @@ export class RegisterComponent implements OnInit {
   	) { 
   	this.title ='Sign up';
   	this.user = new User("",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"ROLE_USER", //but it is not necessary, the backend will be in charge
-		"");
-  	}
+      "",
+      "",
+      "",
+      "",
+      "",
+      "ROLE_USER", //but it is not necessary, the backend will be in charge
+      "");
+  }
 
   ngOnInit() {
-  	  	console.log('Registration component loaded');
+    console.log('Registration component loaded');
 
   }
   //We passed this variable to leave the form blank
@@ -53,15 +53,15 @@ export class RegisterComponent implements OnInit {
   				form.reset(); //form reset
 
   			}else {
-				this.status ='error';  				
-  			}
-  		},
-  		error => {
-  			console.log(<any>error);
+          this.status ='error';  				
+        }
+      },
+      error => {
+        console.log(<any>error);
 
-  		}
+      }
 
-  		);
+      );
 
   }
 

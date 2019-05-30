@@ -16,8 +16,8 @@
 	padding: 0px;
 }
 body {
-		font-family: "yanone", Arial, Helvetica;
-		font-size: 20px;
+	font-family: "yanone", Arial, Helvetica;
+	font-size: 20px;
 /*		background: url('../img/pattern.png');
 */		background-attachment: fixed;
 }
@@ -30,32 +30,32 @@ body {
 /* Jumbotron */
 .jumbotron { 
 	background: white!important;
- }
+}
 
 @media (min-width: 576px)
 {
-.jumbotron {
-   /* padding: 2rem 2rem!important;*/
-    padding: 2rem 2rem 0rem 2rem!important;
+	.jumbotron {
+		/* padding: 2rem 2rem!important;*/
+		padding: 2rem 2rem 0rem 2rem!important;
 	}
 }
- /* Hover Main nav*/
+/* Hover Main nav*/
 header a:hover,
- .actived {
+.actived {
 	/*background: rgba(0,0,0,0.8);*/
 	font-family: "finger";
 }
 
 /* Logo */
- #logo {
- 	font-family: "finger";
- 	font-size: 30px;
- 	padding-top: 0px;
- }
+#logo {
+	font-family: "finger";
+	font-size: 30px;
+	padding-top: 0px;
+}
 #logo a {
 	transition: color 500ms, transform 500ms; 
 }
- #logo a:hover {
+#logo a:hover {
 	background: transparent;
 	color:black;
 	transform: scale(1.50,1.50);
@@ -83,13 +83,13 @@ h2.title  {
 	font-family: "finger"!important;
 }
 p.title {
-		font-family: "finger"!important;
+	font-family: "finger"!important;
 }
 p.title-about {
-		font-family: "finger"!important;
-		color:gray;
-		font-size: 16px;
-	}
+	font-family: "finger"!important;
+	color:gray;
+	font-size: 16px;
+}
 h3.title {
 	font-family: "finger"!important;
 	color:gray;
@@ -139,11 +139,11 @@ h3.title-message-detail  {
 }
 .container .image {
  /*	float: left;
- 	width: 47%;*/
+ width: 47%;*/
 }
 .container .image img {
- 	
- 	width: 100%;
+	
+	width: 100%;
 }
 .container h2 {
 	border-bottom: 1px solid #ccc;

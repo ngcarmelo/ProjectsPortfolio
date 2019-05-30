@@ -15,7 +15,7 @@
   </button>
 
 
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item active">
         <a class="nav-link" [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']">About me <span class="sr-only">(current)</span></a>
@@ -23,10 +23,10 @@
       <li class="nav-item">
         <a class="nav-link"  [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">Projects</a>
       </li>
-       <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/sobre-mi']" [routerLinkActive]="['actived']" id="logo">CN</a>
       </li>
-       <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']" *ngIf="identity">Create a Project</a>
       </li>
       
@@ -35,17 +35,17 @@
         
       </li>
 
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/messages']" [routerLinkActive]="['actived']" *ngIf="identity">Read Messages</a>
       </li>
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['actived']" *ngIf="!identity">Login in</a>
       </li>
-       <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['actived']" *ngIf="identity">Sign up</a>
       </li>
-     </ul>
-   </div>
+    </ul>
+  </div>
 </nav>
 
 

@@ -5,17 +5,17 @@
 // import { UserService } from './services/user.service';
 // import { UserGuard } from  './services/user.guard';
 // and then in providers
- // providers: [  
- //  appRoutingProviders,
- //  UserService,
- //  UserGuard
- //    ],
+// providers: [  
+//  appRoutingProviders,
+//  UserService,
+//  UserGuard
+//    ],
 
- // and then in the routing to import it also:
+// and then in the routing to import it also:
 // import { UserGuard } from  './services/user.guard';
 
 // and adding the following property in each route that we want to use it:
- // canActivate:[UserGuard]
+// canActivate:[UserGuard]
 
 
 import { Injectable } from '@angular/core'; //define services and inject them
@@ -25,8 +25,8 @@ import { UserService } from './user.service';
 @Injectable()
 export class UserGuard implements CanActivate {
 	constructor(
-	 private _router: Router,
-     private _userService: UserService
+		private _router: Router,
+		private _userService: UserService
 		){}
 
 

@@ -33,7 +33,7 @@ export class ProjectsComponent implements OnInit {
   			if(response.projects){
   				//save the response in the created variable
   				this.projects = response.projects
-         
+          
   			}
   		},
   		error => {
